@@ -1512,7 +1512,7 @@
         }
         function storeHint() {
             if (!storageOK) return CLOUD ? `Can't reach the shared album right now (${cloudErr || "offline"}). Check your internet.` : "Adding photos isn't available in this browser mode.";
-            return CLOUD ? "Photos you add here show up on every device 💕" : "Photos you add are saved on this device only 💕";
+            return CLOUD ? "" : "";
         }
         // re-draw whatever is on screen when photos change (also runs when another device adds one)
         function refreshAlbumsView() {
