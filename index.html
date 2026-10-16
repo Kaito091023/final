@@ -709,6 +709,10 @@
                 animation-delay: 0.24s;
             }
 
+            .nav-btn-vertical.fade-in-right:nth-child(4) {
+                animation-delay: 0.36s;
+            }
+
             /* ---------- Albums ---------- */
 
             .album-list {
@@ -1158,7 +1162,20 @@
                 <div class="page-content" id="albumsContent"></div>
             </div>
         </div>
-
+        
+        <div id="reasonsPage" class="screen hidden">
+            <div class="page-container">
+                <div class="page-header">
+                    <button class="back-button">←</button>
+                    <div class="page-title">💗 Reasons</div>
+                    <div style="width: 44px;"></div>
+                </div>
+                <div class="page-content">
+                <!-- your content goes here -->
+                    <p>blablabla</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="miniPlayer" class="mini-player hidden">
@@ -1195,6 +1212,7 @@
         let letterSplit = false, animateSongs = false;
         const messagePage = document.getElementById("messagePage");
         const musicPage = document.getElementById("musicPage");
+        const randomsPage = document.getElementById("randomsPage");
 
         function revealDashboard() {
             miniPlayer.classList.remove("hidden");
@@ -1391,7 +1409,7 @@
                 else playSong(idx);
             }));
         }
-
+        
         // ---------------- Albums ----------------
         const albums = [
             {
@@ -1528,6 +1546,7 @@
             messagePage.classList.add("hidden");
             musicPage.classList.add("hidden");
             albumsPage.classList.add("hidden");
+            randomsPage.classList.add("hidden");
             document.getElementById(pageId).classList.remove("hidden");
             
             if (pageId === 'musicPage') {
@@ -1544,6 +1563,7 @@
             messagePage.classList.add("hidden");
             musicPage.classList.add("hidden");
             albumsPage.classList.add("hidden");
+            randomsPage.classList.add("hidden");
             closeLightbox();
         }
 
@@ -1553,6 +1573,7 @@
                 if (section === 'message') showPage('messagePage');
                 else if (section === 'music') showPage('musicPage');
                 else if (section === 'albums') showPage('albumsPage');
+                else if (section === 'randoms') showPage('randomsPage');
             });
         });
 
@@ -1587,6 +1608,7 @@
             messagePage.classList.add("hidden");
             musicPage.classList.add("hidden");
             albumsPage.classList.add("hidden");
+            randomsPage.classList.add("hidden");
             if (currentAudio) stopAudio();
         }
         mpPlay.onclick = () => playing ? pauseSong() : resumeOrStart();
