@@ -214,20 +214,9 @@
             }
 
             @media (max-width: 480px) {
-                .key {
-                    width: 65px;
-                    height: 65px;
-                    font-size: 1.8rem;
-                }
-                
-                .code-digits {
-                    font-size: 1.6rem;
-                    letter-spacing: 8px;
-                }
-                
-                .keypad-row {
-                    gap: 15px;
-                }
+                .key { width: 65px; height: 65px; font-size: 1.8rem; }
+                .code-digits { font-size: 1.6rem; letter-spacing: 8px; }
+                .keypad-row { gap: 15px; }
             }
 
             .dashboard {
@@ -702,18 +691,8 @@
                 animation-delay: 0.24s;
             }
 
-            .nav-btn-vertical.fade-in-right:nth-child(4) {
-                animation-delay: 0.36s;
-            }
-
             /* ---------- Albums ---------- */
-
-            .album-list {
-                display: flex;
-                flex-direction: column;
-                gap: 16px; 
-            }
-
+            .album-list { display: flex; flex-direction: column; gap: 16px; }
             .album-card {
                 background: white;
                 border: 1px solid #ffe0e7;
@@ -726,22 +705,10 @@
                 cursor: pointer;
                 transition: transform .2s ease, background .2s ease;
             }
+            .album-card:active { transform: scale(0.98); background: #fff5f8; }
+            .album-card.album-in { animation: FadeInRight .5s ease-out calc(var(--i) * 90ms) both; }
 
-            .album-card:active {
-                transform: scale(0.98);
-                background: #fff5f8;
-            }
-
-            .album-card.album-in {
-                animation: FadeInRight .5s ease-out calc(var(--i) * 90ms) both;
-            }
-
-            .album-stack {
-                position: relative;
-                width: 84px; height: 84px;
-                flex-shrink: 0;
-            }
-
+            .album-stack { position: relative; width: 84px; height: 84px; flex-shrink: 0; }
             .album-stack .stack-photo {
                 position: absolute;
                 inset: 6px;
@@ -753,33 +720,14 @@
                 display: flex; align-items: center; justify-content: center;
                 font-size: 1.6rem;
             }
-
             .album-stack .stack-photo:nth-child(1) { transform: rotate(-9deg); }
             .album-stack .stack-photo:nth-child(2) { transform: rotate(7deg); }
             .album-stack .stack-photo:nth-child(3) { transform: rotate(-1deg); z-index: 1; }
+            .stack-photo img, .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-            .stack-photo img, .photo-frame img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-            }
-
-            .album-info {
-                flex: 1; min-width: 0;
-            }
-
-            .album-name {
-                font-weight: 700;
-                color: #c44569;
-                font-size: 1.1rem;
-            }
-
-            .album-sub {
-                font-size: .75rem;
-                color: #b5838a;
-                margin-top: 4px;
-            }
+            .album-info { flex: 1; min-width: 0; }
+            .album-name { font-weight: 700; color: #c44569; font-size: 1.1rem; }
+            .album-sub { font-size: .75rem; color: #b5838a; margin-top: 4px; }
 
             .album-intro {
                 text-align: center;
@@ -788,14 +736,7 @@
                 font-style: italic;
                 margin: 4px 0 18px;
             }
-
-            .photo-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px 14px;
-                padding-top: 4px;
-            }
-
+            .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 14px; padding-top: 4px; }
             .photo-tile {
                 background: white;
                 border: 1px solid #ffe0e7;
@@ -807,7 +748,6 @@
                 text-align: center;
                 transition: transform .2s ease;
             }
-
             .photo-tile:nth-child(odd)  { transform: rotate(-1.4deg); }
             .photo-tile:nth-child(even) { transform: rotate(1.2deg); }
             .photo-tile:active { transform: scale(0.96); }
@@ -819,138 +759,117 @@
                 background: linear-gradient(145deg, #ffdde1, #ee9ca7);
                 display: flex; align-items: center; justify-content: center;
             }
-
-            .ph {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 6px; color: white;
-                font-size: 2rem;
-                width: 100%;
-                height: 100%;
-                justify-content: center;
-            }
-
-            .ph small {
-                font-size: .62rem;
-                opacity: .9;
-                letter-spacing: .3px;
-            }
-
-            .photo-cap {
-                font-size: .72rem;
-                color: #a56b7c; 
-                margin-top: 8px;
-                line-height: 1.3;
-                min-height: 1.3em;
-            }
+            .ph { display: flex; flex-direction: column; align-items: center; gap: 6px; color: white; font-size: 2rem; width: 100%; height: 100%; justify-content: center; }
+            .ph small { font-size: .62rem; opacity: .9; letter-spacing: .3px; }
+            .photo-cap { font-size: .72rem; color: #a56b7c; margin-top: 8px; line-height: 1.3; min-height: 1.3em; }
 
             .lightbox {
-                position: fixed;
-                inset: 0;
-                z-index: 30;
+                position: fixed; inset: 0; z-index: 30;
                 background: rgba(40, 14, 24, .88);
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                display: flex; align-items: center; justify-content: center;
                 padding: 56px 14px 40px;
                 animation: lbFade .25s ease;
             }
-
-            @keyframes lbFade {
-                from {
-                    opacity: 0;
-                }
-                
-                to {
-                    opacity: 1;
-                }
-            }
-
-            .lb-figure {
-                max-width: 440px;
-                width: 100%;
-                text-align: center;
-            }
-
+            @keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+            .lb-figure { max-width: 440px; width: 100%; text-align: center; }
             #lbImgWrap {
-                background: white;
-                padding: 10px 10px 0;
-                border-radius: 10px;
+                background: white; padding: 10px 10px 0; border-radius: 10px;
                 box-shadow: 0 20px 40px rgba(0,0,0,.4);
             }
-
-            #lbImgWrap img {
-                width: 100%;
-                max-height: 66vh;
-                object-fit: contain;
-                display: block;
-                border-radius: 4px;
-            }
-
-            #lbImgWrap .ph {
-                height: 50vh;
-                border-radius: 4px;
-                background: linear-gradient(145deg, #ffdde1, #ee9ca7);
-            }
-
-            #lbCap {
-                background: white;
-                color: #c44569;
-                font-weight: 600;
-                font-size: .9rem;
-                padding: 12px 10px 14px;
-                border-radius: 0 0 10px 10px;
-                margin-top: -2px;
-            }
-
-            .lb-count {
-                position: absolute;
-                bottom: calc(14px + env(safe-area-inset-bottom, 0px));
-                left: 0; right: 0;
-                text-align: center;
-                color: #ffdde1;
-                font-size: .8rem;
-            }
-
+            #lbImgWrap img { width: 100%; max-height: 66vh; object-fit: contain; display: block; border-radius: 4px; }
+            #lbImgWrap .ph { height: 50vh; border-radius: 4px; background: linear-gradient(145deg, #ffdde1, #ee9ca7); }
+            #lbCap { background: white; color: #c44569; font-weight: 600; font-size: .9rem; padding: 12px 10px 14px; border-radius: 0 0 10px 10px; margin-top: -2px; }
+            .lb-count { position: absolute; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); left: 0; right: 0; text-align: center; color: #ffdde1; font-size: .8rem; }
             .lb-close, .lb-nav {
-                position: absolute;
-                border: none;
+                position: absolute; border: none; cursor: pointer;
+                background: rgba(255,255,255,.18); color: white;
+                width: 44px; height: 44px; border-radius: 50%; font-size: 1.4rem;
+                display: flex; align-items: center; justify-content: center;
+            }
+            .lb-close { top: calc(12px + env(safe-area-inset-top, 0px)); right: 14px; }
+            .lb-nav { top: 50%; transform: translateY(-50%); font-size: 2rem; padding-bottom: 4px; }
+            .lb-prev { left: 8px; }
+            .lb-next { right: 8px; }
+            .lb-close:active, .lb-nav:active { background: rgba(255,255,255,.35); }
+
+            .nav-btn-vertical.fade-in-right:nth-child(4) {
+                animation-delay: 0.36s;
+            }
+
+            /* ---------- Random ---------- */
+            .random-wrap { display: flex; flex-direction: column; align-items: center; gap: 22px; padding-top: 6px; }
+            .random-card {
+                width: 100%;
+                min-height: 230px;
+                background: white;
+                border: 1px solid #ffe0e7;
+                border-radius: 32px;
+                padding: 26px 22px;
+                box-shadow: 0 8px 20px rgba(196, 69, 105, 0.14);
+                display: flex; flex-direction: column; align-items: center; justify-content: center;
+                gap: 16px; text-align: center;
+            }
+            .random-card.pop { animation: randomPop .45s cubic-bezier(.2, .9, .3, 1.3); }
+            @keyframes randomPop { from { opacity: 0; transform: scale(.9) translateY(10px); } to { opacity: 1; transform: none; } }
+            .random-tag {
+                background: #fff0f4; color: #c44569; font-weight: 700;
+                font-size: .78rem; padding: 6px 14px; border-radius: 999px; letter-spacing: .3px;
+            }
+            .random-text { color: #8a4a5c; font-size: 1.15rem; line-height: 1.5; font-weight: 500; }
+            .random-btn {
+                border: none; cursor: pointer; font-family: inherit;
+                background: linear-gradient(135deg, #ff7aa2, #c44569);
+                color: white; font-weight: 700; font-size: 1.05rem;
+                padding: 16px 32px; border-radius: 999px;
+                box-shadow: 0 8px 18px rgba(196, 69, 105, .35);
+                transition: transform .15s ease;
+            }
+            .random-btn:active { transform: scale(.95); }
+            .random-btn .dice { display: inline-block; }
+            .random-btn.rolling .dice { animation: diceRoll .5s ease; }
+            @keyframes diceRoll { to { transform: rotate(540deg) scale(1.2); } }
+            .random-count { font-size: .75rem; color: #b5838a; }
+
+            .add-photo-btn {
+                width: 100%;
+                border: 2px dashed #ffb7c5;
+                background: #fff5f8;
+                color: #c44569;
+                font-family: inherit;
+                font-weight: 700;
+                font-size: 1rem;
+                padding: 14px;
+                border-radius: 999px;
                 cursor: pointer;
-                background: rgba(255,255,255,.18);
-                color: white;
-                width: 44px;
-                height: 44px;
-                border-radius: 50%;
-                font-size: 1.4rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                transition: transform .15s ease, background .15s ease;
             }
+            .add-photo-btn:active { transform: scale(.97); background: #ffe4ec; }
+            .add-hint { text-align: center; font-size: .72rem; color: #b5838a; margin: 8px 0 18px; }
 
-            .lb-close {
-                top: calc(12px + env(safe-area-inset-top, 0px));
-                right: 14px;
+            .lb-del {
+                position: absolute;
+                top: calc(16px + env(safe-area-inset-top, 0px));
+                left: 14px;
+                border: none; cursor: pointer; font-family: inherit;
+                background: rgba(255,255,255,.18); color: white;
+                padding: 10px 16px; border-radius: 999px; font-size: .8rem; font-weight: 600;
             }
+            .lb-del:active { background: rgba(255,255,255,.35); }
 
-            .lb-nav {
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 2rem;
-                padding-bottom: 4px;
+            .toast {
+                position: fixed;
+                left: 50%;
+                bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+                transform: translate(-50%, 20px);
+                background: #c44569; color: white;
+                padding: 12px 20px; border-radius: 999px;
+                font-size: .85rem; font-weight: 600;
+                box-shadow: 0 8px 20px rgba(196,69,105,.35);
+                opacity: 0; pointer-events: none;
+                transition: opacity .25s ease, transform .25s ease;
+                z-index: 40; max-width: calc(100% - 40px); text-align: center;
             }
-
-            .lb-prev {
-                left: 8px;
-            }
-
-            .lb-next {
-                right: 8px;
-            }
-
-            .lb-close:active, .lb-nav:active {
-                background: rgba(255,255,255,.35);
-            }
+            .toast.show { opacity: 1; transform: translate(-50%, 0); }
         </style>
     </head>
     <body>
@@ -1040,14 +959,7 @@
                         </div>
                         <div class="nav-arrow">→</div>
                     </button>
-                    <button class="nav-btn-vertical" data-section="randoms">
-                        <div class="nav-icon-large">❓</div>
-                        <div class="nav-text-group">
-                            <div class="nav-label-large">Randoms</div>
-                            <div class="nav-role-large">Random Things</div>
-                        </div>
-                        <div class="nav-arrow">→</div>
-                    </button>
+                    
                 </div>
                 <div class="simple-footer">
                     — amour de ma vie. ❤️
@@ -1155,20 +1067,27 @@
                 <div class="page-content" id="albumsContent"></div>
             </div>
         </div>
-        
-        <div id="reasonsPage" class="screen hidden">
+
+        <div id="randomsPage" class="screen hidden">
             <div class="page-container">
                 <div class="page-header">
                     <button class="back-button">←</button>
-                    <div class="page-title">💗 Reasons</div>
+                    <div class="page-title">❓ Randoms</div>
                     <div style="width: 44px;"></div>
                 </div>
                 <div class="page-content">
-                <!-- your content goes here -->
-                    <p>blablabla</p>
+                    <div class="random-wrap">
+                        <div class="random-card" id="randomCard">
+                            <div class="random-tag" id="randomTag">🎁 Surprise</div>
+                            <div class="random-text" id="randomText"></div>
+                        </div>
+                        <button class="random-btn" id="randomBtn"><span class="dice">🎲</span> Surprise me</button>
+                        <div class="random-count" id="randomCount"></div>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <div id="miniPlayer" class="mini-player hidden">
@@ -1180,6 +1099,7 @@
 
     <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="Photo viewer">
         <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+        <button class="lb-del hidden" id="lbDel">🗑 Remove</button>
         <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo">‹</button>
         <figure class="lb-figure">
             <div id="lbImgWrap"></div>
@@ -1188,6 +1108,9 @@
         <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo">›</button>
         <div class="lb-count" id="lbCount"></div>
     </div>
+
+    <input type="file" id="photoInput" accept="image/*" multiple class="hidden">
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <script>
         const CORRECT_CODE = "1202";
@@ -1205,7 +1128,6 @@
         let letterSplit = false, animateSongs = false;
         const messagePage = document.getElementById("messagePage");
         const musicPage = document.getElementById("musicPage");
-        const randomsPage = document.getElementById("randomsPage");
 
         function revealDashboard() {
             miniPlayer.classList.remove("hidden");
@@ -1316,16 +1238,16 @@
         }
 
         const playlist = [
-            { title: "All I Need To Hear", artist: "The 1975", emoji: "🎤", src: "The 1975 - All I Need To Hear.mp3" },
-            { title: "The Robbers", artist: "The 1975", emoji: "🎤", src: "The 1975 - The Robbers.mp3" },
-            { title: "Fallingforyou", artist: "The 1975", emoji: "🎤", src: "The 1975 - Fallingforyou.mp3" },
-            { title: "About You", artist: "The 1975", emoji: "🎤", src: "The 1975 - About You.mp3" },
-            { title: "cherry flavored love inside your heart", artist: "wave to earth", emoji: "🎤", src: "wave to earth - cherry flavored love inside your heart.mp3" },
-            { title: "Captivated", artist: "IV OF SPADES", emoji: "🎤", src: "IV OF SPADES - Captivated.mp3" },
-            { title: "Dear", artist: "Ben&Ben", emoji: "🎤", src: "Ben&Ben - Dear.mp3" },
-            { title: "Aphrodite", artist: "The Ridleys", emoji: "🎤", src: "The Ridleys - Aphrodite.mp3" },
-            { title: "Garden", artist: "The Ridleys", emoji: "🎤", src: "The Ridleys - Garden.mp3" },
-            { title: "Happiness", artist: "Rex Orange County", emoji: "🎤", src: "Rex Orange County - Happiness.mp3" },
+            { title: "All I Need To Hear", artist: "The 1975", emoji: "🎤", src: "Musics/The 1975 - All I Need To Hear.mp3" },
+            { title: "The Robbers", artist: "The 1975", emoji: "🎤", src: "Musics/The 1975 - The Robbers.mp3" },
+            { title: "Fallingforyou", artist: "The 1975", emoji: "🎤", src: "Musics/The 1975 - Fallingforyou.mp3" },
+            { title: "About You", artist: "The 1975", emoji: "🎤", src: "Musics/The 1975 - About You.mp3" },
+            { title: "cherry flavored love inside your heart", artist: "wave to earth", emoji: "🎤", src: "Musics/wave to earth - cherry flavored love inside your heart.mp3" },
+            { title: "Captivated", artist: "IV OF SPADES", emoji: "🎤", src: "Musics/IV OF SPADES - Captivated.mp3" },
+            { title: "Dear", artist: "Ben&Ben", emoji: "🎤", src: "Musics/Ben&Ben - Dear.mp3" },
+            { title: "Aphrodite", artist: "The Ridleys", emoji: "🎤", src: "Musics/The Ridleys - Aphrodite.mp3" },
+            { title: "Garden", artist: "The Ridleys", emoji: "🎤", src: "Musics/The Ridleys - Garden.mp3" },
+            { title: "Happiness", artist: "Rex Orange County", emoji: "🎤", src: "Musics/Rex Orange County - Happiness.mp3" },
         ];
 
         const BG_TITLE = "All I Need To Hear";
@@ -1402,24 +1324,38 @@
                 else playSong(idx);
             }));
         }
-        
+
         // ---------------- Albums ----------------
+        // Put your photos in a "Photos" folder next to index.html, then edit the lists below.
+        // Add/remove photos freely. If a file is missing, a pink placeholder shows instead.
+        const firebaseConfig = {
+            apiKey: "AIzaSyAF-04OTjTu6RkPWMygtd2I8OtwLUYScRA",
+            authDomain: "test-ce145.firebaseapp.com",
+            databaseURL: "https://test-ce145-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "test-ce145",
+            storageBucket: "test-ce145.firebasestorage.app",
+            messagingSenderId: "740897584349",
+            appId: "1:740897584349:web:be1653c32354273e9a5734"
+        };
+
+        const CLOUD = !/PASTE/.test(firebaseConfig.apiKey + firebaseConfig.projectId);
+
         const albums = [
             {
-                title: "Lil Kisi", emoji: "🍼", subtitle: "years ago",
-                intro: "batang dugyutin days",
+                id: "then", title: "Lil kaye", emoji: "🍼", subtitle: "years ago",
+                intro: "dugyutin na cute",
                 photos: [
-                    { src: "T 1.jpeg" , caption: "malupit na headtilt" },
-                    { src: "T 2.jpeg" , caption: "swagg check" },
-                    { src: "T 3.jpeg" , caption: "so sillyyy nung isa" },
-                    { src: "T 4.jpeg" , caption: "nak tayo ka r'yan  nak" },
+                    { src: "T 1.jpg", caption: "malupit na headtilt" },
+                    { src: "T 2.jpg", caption: "tita outfit?" },
+                    { src: "T 3.jpg", caption: "so sillyyy nung isa" },
+                    { src: "T 4.jpg", caption: "nak tayo ka r'yan  nak" },
                 ]
             },
             {
-                title: "Mcdo girl now", emoji: "🌸", subtitle: "Today",
-                intro: "somehow even prettier now ✨",
+                id: "now", title: "mcdo girl now", emoji: "🌸", subtitle: "Today",
+                intro: "somehow even prettier now",
                 photos: [
-                    { src: "N 1.jpeg" , caption: "dimple check?" },
+                    { src: "N 1.jpg", caption: "dimple check?" },
                 ]
             },
         ];
@@ -1428,17 +1364,224 @@
         const albumsContent = document.getElementById("albumsContent");
         const albumsTitle = document.getElementById("albumsTitle");
         const lightbox = document.getElementById("lightbox");
-        let openAlbum = null, lbIndex = 0;
+        const photoInput = document.getElementById("photoInput");
+        const lbDel = document.getElementById("lbDel");
+        let openAlbum = null, lbIndex = 0, currentPhotos = [];
 
         const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-        const phHTML = (emoji, label = "photo coming soon") => `<div class="ph"><span>${emoji}</span><small>${label}</small></div>`;
 
-        // swap broken images for a pink placeholder
+        // ----- small pop-up message -----
+        let toastTimer = null;
+        function toast(msg, ms = 2600) {
+            const el = document.getElementById("toast");
+            el.textContent = msg;
+            el.classList.add("show");
+            clearTimeout(toastTimer);
+            if (ms) toastTimer = setTimeout(() => el.classList.remove("show"), ms);
+        }
+
+        // ----- photos she adds -----
+        // Shared mode (Firebase filled in above): saved online, visible on every device.
+        // Otherwise: saved on her own device only (IndexedDB).
+        let userPhotos = {}, storageOK = true, cloudErr = "";
+        const CAPTION = "Added by Kacey 💕";
+        const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), ms))]);
+
+        // ---- this device only ----
+        let dbPromise = null;
+        function getDB() {
+            if (!dbPromise) dbPromise = new Promise((res, rej) => {
+                const r = indexedDB.open("album-photos", 1);
+                r.onupgradeneeded = () => r.result.createObjectStore("photos", { keyPath: "id", autoIncrement: true });
+                r.onsuccess = () => res(r.result);
+                r.onerror = () => rej(r.error);
+            });
+            return dbPromise;
+        }
+        async function idbAll() {
+            const db = await getDB();
+            return new Promise((res, rej) => {
+                const q = db.transaction("photos").objectStore("photos").getAll();
+                q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error);
+            });
+        }
+        async function idbAdd(rec) {
+            const db = await getDB();
+            return new Promise((res, rej) => {
+                const tx = db.transaction("photos", "readwrite");
+                tx.objectStore("photos").add(rec);
+                tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error); tx.onabort = () => rej(tx.error);
+            });
+        }
+        async function idbDel(id) {
+            const db = await getDB();
+            return new Promise((res, rej) => {
+                const tx = db.transaction("photos", "readwrite");
+                tx.objectStore("photos").delete(id);
+                tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error);
+            });
+        }
+
+        // ---- shared (Firebase Firestore) ----
+        let cloudDB = null, cloudReadyP = null;
+        function loadScript(u) {
+            return new Promise((res, rej) => {
+                const el = document.createElement("script");
+                el.src = u; el.onload = res; el.onerror = () => rej(new Error("Could not load Firebase"));
+                document.head.appendChild(el);
+            });
+        }
+        function onCloudSnap(snap) {
+            const next = {};
+            albums.forEach(a => { next[a.id] = []; });
+            snap.forEach(d => {
+                const r = d.data();
+                if (next[r.album] && r.data) next[r.album].push({ id: d.id, src: r.data, caption: CAPTION, mine: true });
+            });
+            userPhotos = next;
+            storageOK = true;
+            refreshAlbumsView();
+        }
+        function cloudReady() {
+            if (!cloudReadyP) cloudReadyP = (async () => {
+                const base = "https://www.gstatic.com/firebasejs/10.12.2/";
+                await loadScript(base + "firebase-app-compat.js");
+                await loadScript(base + "firebase-firestore-compat.js");
+                firebase.initializeApp(firebaseConfig);
+                cloudDB = firebase.firestore();
+                await new Promise((res, rej) => {
+                    let first = true;
+                    cloudDB.collection("photos").orderBy("ts").onSnapshot(snap => {
+                        onCloudSnap(snap);
+                        if (first) { first = false; res(); }
+                    }, err => {
+                        cloudErr = err.code || err.message;
+                        if (first) { first = false; rej(err); }
+                        else { storageOK = false; toast("Lost connection to the shared album"); }
+                    });
+                });
+            })().catch(e => { cloudReadyP = null; throw e; });
+            return cloudReadyP;
+        }
+        const cloudAdd = (album, data) => cloudDB.collection("photos").add({ album, data, ts: Date.now() });
+        const cloudDel = id => cloudDB.collection("photos").doc(id).delete();
+
+        // ---- one set of functions for the rest of the page ----
+        async function loadUserPhotos() {
+            if (CLOUD) {
+                try { await cloudReady(); storageOK = true; }
+                catch (e) { storageOK = false; cloudErr = cloudErr || e.code || e.message; console.error(e); }
+                return;
+            }
+            Object.values(userPhotos).flat().forEach(p => URL.revokeObjectURL(p.src));
+            userPhotos = {};
+            albums.forEach(a => { userPhotos[a.id] = []; });
+            try {
+                const all = await idbAll();
+                all.sort((x, y) => x.ts - y.ts).forEach(r => {
+                    if (userPhotos[r.album]) userPhotos[r.album].push({ id: r.id, src: URL.createObjectURL(r.blob), caption: CAPTION, mine: true });
+                });
+                storageOK = true;
+            } catch (e) { storageOK = false; }
+        }
+        async function saveUserPhoto(albumId, file) {
+            if (CLOUD) await withTimeout(cloudAdd(albumId, await shrinkToDataURL(file)), 25000);
+            else await idbAdd({ album: albumId, blob: await shrink(file), ts: Date.now() + Math.random() });
+        }
+        function storeHint() {
+            if (!storageOK) return CLOUD ? `Can't reach the shared album right now (${cloudErr || "offline"}). Check your internet.` : "Adding photos isn't available in this browser mode.";
+            return CLOUD ? "Photos you add here show up on every device 💕" : "Photos you add are saved on this device only 💕";
+        }
+        // re-draw whatever is on screen when photos change (also runs when another device adds one)
+        function refreshAlbumsView() {
+            if (albumsPage.classList.contains("hidden")) return;
+            if (openAlbum === null) { renderAlbumList(false); return; }
+            currentPhotos = getPhotos(albums[openAlbum]);
+            if (!lightbox.classList.contains("hidden")) {
+                if (!currentPhotos.length) closeLightbox();
+                else { lbIndex = Math.min(lbIndex, currentPhotos.length - 1); showLightboxPhoto(); }
+            }
+            renderAlbum(openAlbum, false);
+        }
+        const getPhotos = a => [...a.photos, ...(userPhotos[a.id] || [])];
+
+        // shrink big phone photos so storage stays small and the page stays fast
+        async function shrink(file, max = 1400) {
+            const url = URL.createObjectURL(file);
+            try {
+                const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = url; });
+                const k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+                const c = document.createElement("canvas");
+                c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+                c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+                return await new Promise((res, rej) => c.toBlob(b => b ? res(b) : rej(new Error("blob")), "image/jpeg", 0.85));
+            } finally { URL.revokeObjectURL(url); }
+        }
+
+        async function shrinkToDataURL(file) {
+            const url = URL.createObjectURL(file);
+            try {
+                const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = url; });
+                for (const [max, q] of [[1000, 0.72], [900, 0.62], [760, 0.55], [600, 0.5]]) {
+                    const k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+                    const c = document.createElement("canvas");
+                    c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+                    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+                    const d = c.toDataURL("image/jpeg", q);
+                    if (d.length < 800000) return d;
+                }
+                throw new Error("too big");
+            } finally { URL.revokeObjectURL(url); }
+        }
+
+        photoInput.addEventListener("change", async () => {
+            const files = [...photoInput.files];
+            photoInput.value = "";
+            if (!files.length || openAlbum === null) return;
+            const a = albums[openAlbum];
+            let ok = 0, bad = 0;
+            toast("Saving your photos…", 0);
+            if (CLOUD) await loadUserPhotos();
+            if (!storageOK) { toast(storeHint(), 4000); return; }
+            for (const f of files) {
+                try { await saveUserPhoto(a.id, f); ok++; }
+                catch (e) { console.error(e); bad++; }
+            }
+            if (navigator.storage && navigator.storage.persist) navigator.storage.persist();
+            await loadUserPhotos();
+            if (openAlbum !== null) renderAlbum(openAlbum, false);
+            if (ok && !bad) toast(ok === 1 ? "Photo added 💕" : `${ok} photos added 💕`);
+            else if (ok) toast(`${ok} added, ${bad} couldn't be used`);
+            else toast("Couldn't save that photo. Try a JPG or PNG.", 3500);
+        });
+
+        // ----- showing images (tries other extensions/case for files you put in the folder) -----
+        const EXTS = ["jpg", "jpeg", "png", "webp", "JPG", "JPEG", "PNG", "WEBP", "gif"];
+        function candidates(src) {
+            const slash = src.lastIndexOf("/"), dot = src.lastIndexOf(".");
+            const hasExt = dot > slash;
+            const base = hasExt ? src.slice(0, dot) : src;
+            const ext = hasExt ? src.slice(dot + 1) : "";
+            const exts = [...new Set([ext, ...EXTS].filter(Boolean))];
+            const bases = [...new Set([base, base.toLowerCase()])];
+            const out = [];
+            bases.forEach(b => exts.forEach(e => out.push(`${b}.${e}`)));
+            return out;
+        }
+        function imgTag(src, alt) {
+            if (/^(blob:|data:)/.test(src)) return `<img src="${esc(src)}" alt="${esc(alt)}">`;
+            return `<img src="${esc(candidates(src)[0])}" data-src="${esc(src)}" data-try="0" alt="${esc(alt)}">`;
+        }
         function guardImages(root, emoji) {
-            root.querySelectorAll("img").forEach(img => {
-                const swap = () => { img.replaceWith(Object.assign(document.createElement("div"), { className: "ph", innerHTML: `<span>${emoji}</span>` })); };
-                img.addEventListener("error", swap, { once: true });
-                if (img.complete && img.naturalWidth === 0) swap();
+            root.querySelectorAll("img[data-src]").forEach(img => {
+                img.addEventListener("error", () => {
+                    const list = candidates(img.dataset.src), n = +img.dataset.try + 1;
+                    if (n < list.length) { img.dataset.try = n; img.src = list[n]; return; }
+                    const ph = document.createElement("div");
+                    ph.className = "ph";
+                    ph.innerHTML = `<span>${emoji}</span><small style="overflow-wrap:anywhere;padding:0 8px;text-align:center">couldn't find<br>${esc(img.dataset.src)}</small>`;
+                    img.replaceWith(ph);
+                });
             });
         }
 
@@ -1447,11 +1590,12 @@
             albumsTitle.textContent = "📸 Albums";
             let h = `<p class="album-intro">Then &amp; now 💕</p><div class="album-list">`;
             albums.forEach((a, i) => {
-                const stack = a.photos.slice(0, 3).map(p => `<div class="stack-photo"><img src="${esc(p.src)}" alt="" loading="lazy"></div>`).join("")
+                const all = getPhotos(a);
+                const stack = all.slice(0, 3).map(p => `<div class="stack-photo">${imgTag(p.src, "")}</div>`).join("")
                     || `<div class="stack-photo">${a.emoji}</div>`;
                 h += `<div class="album-card${animate ? " album-in" : ""}" style="--i:${i}" data-album="${i}" role="button" tabindex="0">
                         <div class="album-stack">${stack}</div>
-                        <div class="album-info"><div class="album-name">${a.emoji} ${esc(a.title)}</div><div class="album-sub">${esc(a.subtitle)} · ${a.photos.length} photos</div></div>
+                        <div class="album-info"><div class="album-name">${a.emoji} ${esc(a.title)}</div><div class="album-sub">${esc(a.subtitle)} · ${all.length} photos</div></div>
                         <div class="nav-arrow">→</div>
                       </div>`;
             });
@@ -1466,36 +1610,57 @@
             albumsContent.scrollTop = 0;
         }
 
-        function renderAlbum(i) {
+        function renderAlbum(i, animate = true) {
             const a = albums[i];
+            const keepScroll = animate ? 0 : albumsContent.scrollTop;
             openAlbum = i;
+            currentPhotos = getPhotos(a);
             albumsTitle.textContent = `${a.emoji} ${a.title}`;
-            let h = `<p class="album-intro">${esc(a.intro)}</p><div class="photo-grid">`;
-            a.photos.forEach((p, j) => {
-                h += `<button class="photo-tile album-in" style="--i:${j}" data-photo="${j}"><div class="photo-frame"><img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy"></div><div class="photo-cap">${esc(p.caption)}</div></button>`;
+            let h = `<p class="album-intro">${esc(a.intro)}</p>
+                     <button class="add-photo-btn" id="addPhotoBtn">➕ Add your photos</button>
+                     <p class="add-hint">${esc(storeHint())}</p>`;
+            if (!currentPhotos.length) h += `<p class="album-intro">No photos yet. Add the first one 💕</p>`;
+            h += `<div class="photo-grid">`;
+            currentPhotos.forEach((p, j) => {
+                h += `<button class="photo-tile${animate ? " album-in" : ""}" style="--i:${j}" data-photo="${j}"><div class="photo-frame">${imgTag(p.src, p.caption)}</div><div class="photo-cap">${esc(p.caption)}</div></button>`;
             });
             h += `</div>`;
             albumsContent.innerHTML = h;
             guardImages(albumsContent, a.emoji);
+            document.getElementById("addPhotoBtn").onclick = () => photoInput.click();
             albumsContent.querySelectorAll(".photo-tile").forEach(t => t.addEventListener("click", () => openLightbox(+t.dataset.photo)));
-            albumsContent.scrollTop = 0;
+            albumsContent.scrollTop = keepScroll;
         }
 
         function showLightboxPhoto() {
-            const a = albums[openAlbum], p = a.photos[lbIndex];
+            const a = albums[openAlbum], p = currentPhotos[lbIndex];
             const wrap = document.getElementById("lbImgWrap");
-            wrap.innerHTML = `<img src="${esc(p.src)}" alt="${esc(p.caption)}">`;
+            wrap.innerHTML = imgTag(p.src, p.caption);
             guardImages(wrap, a.emoji);
             document.getElementById("lbCap").textContent = p.caption || "";
-            document.getElementById("lbCount").textContent = `${lbIndex + 1} / ${a.photos.length}`;
+            document.getElementById("lbCount").textContent = `${lbIndex + 1} / ${currentPhotos.length}`;
+            lbDel.classList.toggle("hidden", !p.mine);
         }
         function openLightbox(j) { lbIndex = j; showLightboxPhoto(); lightbox.classList.remove("hidden"); }
         function closeLightbox() { lightbox.classList.add("hidden"); }
         function stepLightbox(d) {
-            const n = albums[openAlbum].photos.length;
+            const n = currentPhotos.length;
+            if (!n) return;
             lbIndex = (lbIndex + d + n) % n;
             showLightboxPhoto();
         }
+
+        lbDel.onclick = async () => {
+            const p = currentPhotos[lbIndex];
+            if (!p || !p.mine) return;
+            if (!confirm("Remove this photo from the album?")) return;
+            try { await (CLOUD ? cloudDel(p.id) : idbDel(p.id)); } catch (e) { toast("Couldn't remove that photo"); return; }
+            await loadUserPhotos();
+            renderAlbum(openAlbum, false);
+            if (!currentPhotos.length) closeLightbox();
+            else { lbIndex = Math.min(lbIndex, currentPhotos.length - 1); showLightboxPhoto(); }
+            toast("Photo removed");
+        };
 
         document.getElementById("lbClose").onclick = closeLightbox;
         document.getElementById("lbPrev").onclick = () => stepLightbox(-1);
@@ -1521,6 +1686,63 @@
             if (openAlbum !== null) renderAlbumList(false);
             else goBackToDashboard();
         });
+
+        // ---------------- Random ----------------
+        // Edit, add or delete lines freely. "type" must be one of the keys in randomTypes.
+        const randomTypes = {
+            compliment: "💬 Compliment",
+            date:       "🌹 Date idea",
+            question:   "❓ Question",
+            dare:       "🔥 Little dare",
+            fact:       "✨ Random fact",
+        };
+        const randomItems = [
+            { type: "compliment", text: "Your smile is my favorite thing to look at." },
+            { type: "compliment", text: "You make ordinary days feel special." },
+            { type: "compliment", text: "You're even prettier when you laugh." },
+            { type: "date", text: "Watch the sunset together and trade one song each." },
+            { type: "date", text: "Cook something new together. Burnt or not, it counts." },
+            { type: "date", text: "Late-night drive with the playlist from this page." },
+            { type: "question", text: "What's a tiny thing that made you smile today?" },
+            { type: "question", text: "If we could teleport anywhere right now, where to?" },
+            { type: "question", text: "What's your comfort food? No judgment." },
+            { type: "dare", text: "Send me your cutest selfie right now 🤳" },
+            { type: "dare", text: "Text me one thing you like about yourself." },
+            { type: "dare", text: "Hum your favorite song until I guess it." },
+            { type: "fact", text: "Octopuses have three hearts. I'd still only need yours." },
+            { type: "fact", text: "Honey never spoils. Neither will this." },
+        ];
+
+        const randomsPage = document.getElementById("randomsPage");
+        const randomCard = document.getElementById("randomCard");
+        const randomBtn = document.getElementById("randomBtn");
+        let randomBag = [], randomLast = -1, randomShown = 0;
+
+        function resetRandom() {
+            randomBag = []; randomLast = -1; randomShown = 0;
+            document.getElementById("randomTag").textContent = "🎁 Surprise";
+            document.getElementById("randomText").textContent = "Tap the button for a random surprise.";
+            document.getElementById("randomCount").textContent = "";
+        }
+
+        function rollRandom() {
+            if (!randomBag.length) {
+                // reshuffle; nothing repeats until every item has been shown
+                randomBag = randomItems.map((_, i) => i).sort(() => Math.random() - 0.5);
+                if (randomBag.length > 1 && randomBag[randomBag.length - 1] === randomLast) {
+                    [randomBag[0], randomBag[randomBag.length - 1]] = [randomBag[randomBag.length - 1], randomBag[0]];
+                }
+            }
+            randomLast = randomBag.pop();
+            randomShown++;
+            const item = randomItems[randomLast];
+            document.getElementById("randomTag").textContent = randomTypes[item.type] || "🎁 Surprise";
+            document.getElementById("randomText").textContent = item.text;
+            document.getElementById("randomCount").textContent = `Surprise #${randomShown}`;
+            randomCard.classList.remove("pop"); void randomCard.offsetWidth; randomCard.classList.add("pop");
+            randomBtn.classList.remove("rolling"); void randomBtn.offsetWidth; randomBtn.classList.add("rolling");
+        }
+        randomBtn.addEventListener("click", rollRandom);
 
         function revealLetter() {
             const p = document.querySelector(".letter-content > p");
@@ -1548,7 +1770,8 @@
                 animateSongs = false;
             }
             if (pageId === 'messagePage') revealLetter();
-            if (pageId === 'albumsPage') renderAlbumList(true);
+            if (pageId === 'albumsPage') { renderAlbumList(true); loadUserPhotos().finally(refreshAlbumsView); }
+            if (pageId === 'randomsPage') resetRandom();
         }
 
         function goBackToDashboard() {
