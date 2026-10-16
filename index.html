@@ -854,7 +854,13 @@
                 background: rgba(255,255,255,.18); color: white;
                 padding: 10px 16px; border-radius: 999px; font-size: .8rem; font-weight: 600;
             }
-            .lb-del:active { background: rgba(255,255,255,.35); }
+            .lb-del:active {
+                background: rgba(255,255,255,.35);
+            }
+
+            .lb-edit {
+                left: 122px;
+            }
 
             .toast {
                 position: fixed;
@@ -1100,6 +1106,7 @@
     <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="Photo viewer">
         <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
         <button class="lb-del hidden" id="lbDel">🗑 Remove</button>
+        <button class="lb-del lb-edit hidden" id="lbEdit">✏️ Caption</button>
         <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo">‹</button>
         <figure class="lb-figure">
             <div id="lbImgWrap"></div>
@@ -1366,6 +1373,7 @@
         const lightbox = document.getElementById("lightbox");
         const photoInput = document.getElementById("photoInput");
         const lbDel = document.getElementById("lbDel");
+        const lbEdit = document.getElementById("lbEdit");
         let openAlbum = null, lbIndex = 0, currentPhotos = [];
 
         const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -1378,6 +1386,17 @@
             el.classList.add("show");
             clearTimeout(toastTimer);
             if (ms) toastTimer = setTimeout(() => el.classList.remove("show"), ms);
+        }
+        
+        async function idbSetCaption(id, caption) {
+            const db = await getDB();
+            return new Promise((res, rej) => {
+                const tx = db.transaction("photos", "readwrite");
+                const st = tx.objectStore("photos");
+                const g = st.get(id);
+                g.onsuccess = () => { if (g.result) { g.result.caption = caption; st.put(g.result); } };
+                tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error); tx.onabort = () => rej(tx.error);
+            });
         }
 
         // ----- photos she adds -----
@@ -1436,7 +1455,7 @@
             albums.forEach(a => { next[a.id] = []; });
             snap.forEach(d => {
                 const r = d.data();
-                if (next[r.album] && r.data) next[r.album].push({ id: d.id, src: r.data, caption: CAPTION, mine: true });
+                if (next[r.album] && r.data) next[r.album].push({ id: d.id, src: r.data, caption: r.caption || CAPTION, mine: true });
             });
             userPhotos = next;
             storageOK = true;
@@ -1479,7 +1498,7 @@
             try {
                 const all = await idbAll();
                 all.sort((x, y) => x.ts - y.ts).forEach(r => {
-                    if (userPhotos[r.album]) userPhotos[r.album].push({ id: r.id, src: URL.createObjectURL(r.blob), caption: CAPTION, mine: true });
+                    if (userPhotos[r.album]) userPhotos[r.album].push({ id: r.id, src: URL.createObjectURL(r.blob), caption: r.caption || CAPTION, mine: true });
                 });
                 storageOK = true;
             } catch (e) { storageOK = false; }
@@ -1640,6 +1659,7 @@
             document.getElementById("lbCap").textContent = p.caption || "";
             document.getElementById("lbCount").textContent = `${lbIndex + 1} / ${currentPhotos.length}`;
             lbDel.classList.toggle("hidden", !p.mine);
+            lbEdit.classList.toggle("hidden", !p.mine);
         }
         function openLightbox(j) { lbIndex = j; showLightboxPhoto(); lightbox.classList.remove("hidden"); }
         function closeLightbox() { lightbox.classList.add("hidden"); }
@@ -1660,6 +1680,19 @@
             if (!currentPhotos.length) closeLightbox();
             else { lbIndex = Math.min(lbIndex, currentPhotos.length - 1); showLightboxPhoto(); }
             toast("Photo removed");
+        };
+
+        lbEdit.onclick = async () => {
+            const p = currentPhotos[lbIndex];
+            if (!p || !p.mine) return;
+            const v = prompt("Write a caption for this photo:", p.caption === CAPTION ? "" : p.caption);
+            if (v === null) return;
+            const caption = v.trim().slice(0, 100);
+            try { await withTimeout(CLOUD ? cloudSetCaption(p.id, caption) : idbSetCaption(p.id, caption), 15000); }
+            catch (e) { console.error(e); toast("Couldn't save the caption"); return; }
+            await loadUserPhotos();
+            refreshAlbumsView();
+            toast("Caption saved 💕");
         };
 
         document.getElementById("lbClose").onclick = closeLightbox;
