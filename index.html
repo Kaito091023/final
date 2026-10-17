@@ -2743,7 +2743,7 @@
         function renderRequests() {
             const el = document.getElementById("reqList");
             if (!el) return;
-            if (!requestsList.length) { el.innerHTML = reqReady ? `<p class="req-empty">No requests yet. Be the first 💕</p>` : ""; return; }
+            if (!requestsList.length) { el.innerHTML = reqReady ? `<p class="req-empty">No requests yet.</p>` : ""; return; }
             el.innerHTML = `<div class="req-title">Requested songs</div>` + requestsList.map(r =>
                 `<div class="req-item"><span>🎵</span><div class="req-text"><b>${esc(r.title)}</b>${r.artist ? `<small>${esc(r.artist)}</small>` : ""}</div><button class="req-del" data-id="${esc(r.id)}" aria-label="Remove request">✕</button></div>`
             ).join("");
