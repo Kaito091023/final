@@ -2298,7 +2298,7 @@
             let h = `<div class="music-section"><h3>Fav songss</h3><div class="song-list">`;
             playlist.forEach((song, idx) => {
                 const on = playing && currentlyPlayingIndex === idx;
-                h += `<div class="song-card${animateSongs ? ' song-in' : ''}" style="--i:${idx}"><div class="song-emoji">${song.emoji}</div><div class="song-details"><div class="song-title">${song.title}${on ? ' <span class="eq"><i></i><i></i><i></i></span>' : ''}</div><div class="song-artist">${song.artist}</div>${failed[idx] ? '<div class="song-artist" style="color:#c2185b">⚠️ couldn’t load this song</div>' : ''}</div><div class="play-btn" data-play="${idx}">${on ? '⏸ Pause' : '🎵 Play'}</div></div>`;
+                h += `<div class="song-card${animateSongs ? ' song-in' : ''}" style="--i:${idx}"><div class="song-emoji">${song.emoji}</div><div class="song-details"><div class="song-title">${song.title}${on ? ' <span class="eq"><i></i><i></i><i></i></span>' : ''}</div><div class="song-artist">${song.artist}</div>${failed[idx] ? '<div class="song-artist" style="color:#c2185b">⚠️ couldn’t load this song</div>' : ''}</div><div class="play-btn" data-play="${idx}">${on ? '⏸ Pause' : 'Play'}</div></div>`;
             });
             h += `</div><p style="font-size:0.7rem; text-align:center; margin-top:22px;">💖</p></div>`;
             listEl.innerHTML = h;
