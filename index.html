@@ -1724,6 +1724,93 @@
         .daily-note {
             cursor: pointer;
         }
+
+        /* ---------- updates ---------- */
+        .vertical-nav .nav-btn-vertical:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+        }
+
+        .upd-composer {
+            background: #fff;
+            border: 1px solid #ffe0e7;
+            border-radius: 28px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 22px -12px rgba(196, 69, 105, .4);
+        }
+
+        .upd-pick {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-height: 96px;
+            border: 2px dashed #ffb7c5;
+            background: #fff5f8;
+            border-radius: 22px;
+            color: #9a6475;
+            margin-bottom: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            font-size: 2rem;
+        }
+
+        .upd-pick small {
+            font-size: .78rem;
+        }
+
+        .upd-pick img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .upd-card {
+            background: #fff;
+            border: 1px solid #ffe0e7;
+            border-radius: 10px;
+            padding: 10px 10px 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 22px -10px rgba(196, 69, 105, .45);
+        }
+
+        .upd-card:nth-child(odd) {
+            transform: rotate(-.8deg);
+        }
+
+        .upd-card:nth-child(even) {
+            transform: rotate(.8deg);
+        }
+
+        .upd-card .photo-frame {
+            aspect-ratio: 4 / 3;
+        }
+
+        .upd-cap {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #7a2e4a;
+            margin: 10px 4px 2px;
+            line-height: 1.25;
+        }
+
+        .upd-cap:empty {
+            display: none;
+        }
+
+        .upd-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: .72rem;
+            color: #9a6475;
+            padding: 0 4px;
+        }
+
+        #updatesPage:not(.hidden) {
+            animation: fadeSlideUp .45s ease both;
+        }
     </style>
 </head>
 
@@ -1732,7 +1819,7 @@
         <div id="passcodeScreen" class="screen">
             <div class="passcode-wrapper">
                 <div class="passcode-header">
-                    <div class="emoji-icon">🔐</div>
+                    <div class="emoji-icon">💌🔐</div>
                     <h2>Enter 4-Digit Code to Unlock</h2>
                     <p style="font-size:0.75rem; margin-top:4px;"><span class="pass-sub">Enter our special code
                             💕</span></p>
@@ -1814,6 +1901,22 @@
                         <div class="nav-text-group">
                             <div class="nav-label-large">Albums</div>
                             <div class="nav-role-large">Then &amp; Now</div>
+                        </div>
+                        <div class="nav-arrow">→</div>
+                    </button>
+                    <button class="nav-btn-vertical" data-section="memories">
+                        <div class="nav-icon-large">🕰️</div>
+                        <div class="nav-text-group">
+                            <div class="nav-label-large">Memories</div>
+                            <div class="nav-role-large">Our story</div>
+                        </div>
+                        <div class="nav-arrow">→</div>
+                    </button>
+                    <button class="nav-btn-vertical" data-section="updates">
+                        <div class="nav-icon-large">📍</div>
+                        <div class="nav-text-group">
+                            <div class="nav-label-large">Updates</div>
+                            <div class="nav-role-large">Right now</div>
                         </div>
                         <div class="nav-arrow">→</div>
                     </button>
@@ -1934,6 +2037,27 @@
                 </div>
                 <div class="page-content">
                     <div class="tl" id="memoriesContent"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="updatesPage" class="screen hidden">
+            <div class="page-container">
+                <div class="page-header">
+                    <button class="back-button">←</button>
+                    <div class="page-title">Updates</div>
+                    <div style="width: 44px;"></div>
+                </div>
+                <div class="page-content">
+                    <div class="upd-composer">
+                        <div class="upd-pick" id="updPick"></div>
+                        <input type="text" id="updCaption" class="req-input" maxlength="140"
+                            placeholder="What are you up to right now?" autocomplete="off">
+                        <button class="req-send" id="updPost">Post update 📍</button>
+                        <p class="req-hint" id="updHint"></p>
+                    </div>
+                    <div id="updFeed"></div>
+                    <input type="file" id="updFile" accept="image/*" class="hidden">
                 </div>
             </div>
         </div>
@@ -2174,7 +2298,7 @@
             let h = `<div class="music-section"><h3>🎶 Playlist 🎶</h3><div class="song-list">`;
             playlist.forEach((song, idx) => {
                 const on = playing && currentlyPlayingIndex === idx;
-                h += `<div class="song-card${animateSongs ? ' song-in' : ''}" style="--i:${idx}"><div class="song-emoji">${song.emoji}</div><div class="song-details"><div class="song-title">${song.title}${on ? ' <span class="eq"><i></i><i></i><i></i></span>' : ''}</div><div class="song-artist">${song.artist}</div>${failed[idx] ? '<div class="song-artist" style="color:#c2185b">⚠️ couldn’t load this song</div>' : ''}</div><div class="play-btn" data-play="${idx}">${on ? '⏸ Pause' : 'Play'}</div></div>`;
+                h += `<div class="song-card${animateSongs ? ' song-in' : ''}" style="--i:${idx}"><div class="song-emoji">${song.emoji}</div><div class="song-details"><div class="song-title">${song.title}${on ? ' <span class="eq"><i></i><i></i><i></i></span>' : ''}</div><div class="song-artist">${song.artist}</div>${failed[idx] ? '<div class="song-artist" style="color:#c2185b">⚠️ couldn’t load this song</div>' : ''}</div><div class="play-btn" data-play="${idx}">${on ? '⏸ Pause' : '🎵 Play'}</div></div>`;
             });
             h += `</div><p style="font-size:0.7rem; text-align:center; margin-top:22px;">💖</p></div>`;
             listEl.innerHTML = h;
@@ -2207,20 +2331,20 @@
 
         const albums = [
             {
-                id: "then", title: "Little Kacey", emoji: "🍼", subtitle: "Back then",
-                intro: "Before she grew up to be this pretty 🥹",
+                id: "then", title: "lil kayee", emoji: "🍼", subtitle: "years ago",
+                intro: "batang dugyutin days",
                 photos: [
-                    { src: "T 1.jpg", caption: "Tiny Kacey 🍼" },
-                    { src: "T 2.jpg", caption: "Already cute back then 🥹" },
-                    { src: "T 3.jpg", caption: "That smile hasn't changed 💖" },
-                    { src: "T 4.jpg", caption: "Little princess 👑" },
+                    { src: "T 1.jpg", caption: "Empty" },
+                    { src: "T 2.jpg", caption: "Empty" },
+                    { src: "T 3.jpg", caption: "Empty" },
+                    { src: "T 4.jpg", caption: "Empty" },
                 ]
             },
             {
-                id: "now", title: "Kacey Now", emoji: "🌸", subtitle: "Today",
-                intro: "And somehow even prettier now ✨",
+                id: "now", title: "mcdo girl now", emoji: "🌸", subtitle: "Today",
+                intro: "somehow even prettier now",
                 photos: [
-                    { src: "N 1.jpg", caption: "Kacey today ✨" },
+                    { src: "N 1.jpg", caption: "Empty" },
                 ]
             },
         ];
@@ -2588,7 +2712,7 @@
         function initRequestArea() {
             const el = document.getElementById("requestArea");
             el.innerHTML = `<div class="req-box">
-                <h3>💌 Request a song</h3>
+                <h3>Request a song</h3>
                 <p class="req-sub">Tell me what to add to our playlist 🎧</p>
                 <input id="reqTitle" class="req-input" type="text" maxlength="100" placeholder="Song title" autocomplete="off">
                 <input id="reqArtist" class="req-input" type="text" maxlength="100" placeholder="Artist (optional)" autocomplete="off">
@@ -2672,6 +2796,7 @@
             musicPage.classList.add("hidden");
             albumsPage.classList.add("hidden");
             memoriesPage.classList.add("hidden");
+            updatesPage.classList.add("hidden");
             document.getElementById(pageId).classList.remove("hidden");
 
             if (pageId === 'musicPage') {
@@ -2681,6 +2806,7 @@
             }
             if (pageId === 'messagePage') revealLetter();
             if (pageId === 'memoriesPage') renderMemories();
+            if (pageId === 'updatesPage') openUpdates();
             if (pageId === 'albumsPage') { renderAlbumList(true); loadUserPhotos().finally(refreshAlbumsView); }
         }
 
@@ -2690,6 +2816,7 @@
             musicPage.classList.add("hidden");
             albumsPage.classList.add("hidden");
             memoriesPage.classList.add("hidden");
+            updatesPage.classList.add("hidden");
             closeLightbox();
         }
 
@@ -2700,6 +2827,7 @@
                 else if (section === 'music') showPage('musicPage');
                 else if (section === 'albums') showPage('albumsPage');
                 else if (section === 'memories') showPage('memoriesPage');
+                else if (section === 'updates') showPage('updatesPage');
             });
         });
 
@@ -2735,6 +2863,7 @@
             musicPage.classList.add("hidden");
             albumsPage.classList.add("hidden");
             memoriesPage.classList.add("hidden");
+            updatesPage.classList.add("hidden");
             if (currentAudio) stopAudio();
         }
         mpPlay.onclick = () => playing ? pauseSong() : resumeOrStart();
@@ -2749,16 +2878,77 @@
                 box.append(sp);
             }
         })();
+        // ---------------- Updates ----------------
+        // A photo + caption she (or you) posts, like "outside your house, waiting for you". Saved in Firebase (collection "updates").
+        const updatesPage = document.getElementById("updatesPage");
+        let updList = [], updStarted = false, updFile = null, updUrl = "";
+        const updPickHTML = `<span>📸</span><small>Add a photo (optional)</small>`;
+        const setUpdHint = m => { document.getElementById("updHint").textContent = m; };
+        function timeAgo(ts) {
+            const m = Math.floor((Date.now() - ts) / 6e4);
+            if (m < 1) return "just now";
+            if (m < 60) return `${m} min ago`;
+            const h = Math.floor(m / 60);
+            if (h < 24) return `${h} ${h === 1 ? "hour" : "hours"} ago`;
+            return new Date(ts).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+        }
+        function clearUpdPhoto() { if (updUrl) URL.revokeObjectURL(updUrl); updUrl = ""; updFile = null; document.getElementById("updPick").innerHTML = updPickHTML; }
+        function renderUpdates() {
+            const el = document.getElementById("updFeed");
+            el.innerHTML = updList.length ? updList.map(u => `<div class="upd-card">${u.data ? `<div class="photo-frame"><img src="${esc(u.data)}" alt=""></div>` : ""}<div class="upd-cap">${esc(u.caption)}</div><div class="upd-meta"><span>${timeAgo(u.ts)}</span><button class="req-del" data-id="${esc(u.id)}" aria-label="Delete update">✕</button></div></div>`).join("") : `<p class="req-empty">No updates yet 💌</p>`;
+            el.querySelectorAll(".req-del").forEach(b => b.onclick = async () => {
+                if (!confirm("Delete this update?")) return;
+                try { if (CLOUD) await cloudDB.collection("updates").doc(b.dataset.id).delete(); else { updList = updList.filter(u => u.id !== b.dataset.id); renderUpdates(); } }
+                catch (e) { toast("Couldn’t delete it"); }
+            });
+        }
+        async function startUpdates() {
+            if (!CLOUD) { setUpdHint("Preview mode: posts are not saved or shared until Firebase is connected."); return; }
+            if (updStarted) return;
+            updStarted = true;
+            try {
+                await cloudReady();
+                cloudDB.collection("updates").orderBy("ts", "desc").limit(20).onSnapshot(snap => {
+                    updList = [];
+                    snap.forEach(d => { const r = d.data(); updList.push({ id: d.id, caption: r.caption, data: r.data, ts: r.ts }); });
+                    setUpdHint(""); renderUpdates();
+                }, err => { updStarted = false; setUpdHint(`Can’t load updates (${err.code || err.message}).`); });
+            } catch (e) { updStarted = false; setUpdHint("Can’t reach the server right now. Check your internet."); }
+        }
+        function openUpdates() { if (!document.getElementById("updPick").innerHTML) clearUpdPhoto(); renderUpdates(); startUpdates(); }
+        async function postUpdate() {
+            const input = document.getElementById("updCaption"), cap = input.value.trim();
+            if (!cap && !updFile) { toast("Add a caption or a photo first 📍"); return; }
+            const btn = document.getElementById("updPost");
+            btn.disabled = true;
+            try {
+                const data = updFile ? await shrinkToDataURL(updFile) : "";
+                if (CLOUD) { await cloudReady(); await withTimeout(cloudDB.collection("updates").add({ caption: cap, data, ts: Date.now() }), 25000); }
+                else { updList.unshift({ id: String(Date.now()), caption: cap, data, ts: Date.now() }); renderUpdates(); }
+                input.value = ""; clearUpdPhoto(); toast("Update posted 📍");
+            } catch (e) { console.error(e); toast("Couldn’t post it. Check your internet and try again.", 3500); }
+            finally { btn.disabled = false; }
+        }
+        document.getElementById("updPick").onclick = () => document.getElementById("updFile").click();
+        document.getElementById("updFile").onchange = e => {
+            const f = e.target.files[0]; e.target.value = "";
+            if (!f) return;
+            clearUpdPhoto(); updFile = f; updUrl = URL.createObjectURL(f);
+            document.getElementById("updPick").innerHTML = `<img src="${updUrl}" alt=""><small>Tap to change</small>`;
+        };
+        document.getElementById("updPost").onclick = postUpdate;
+        document.getElementById("updCaption").addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); postUpdate(); } });
+
         // ---------------- Memories + daily note ----------------
         // Edit these! Dates are YYYY-MM-DD.
         const memories = [
-            { date: "2025-01-01", title: "the day I confessed", note: "test" },
+            { date: "2026-10-07", title: "I confessed", note: "wait, test pa lang" },
         ];
         const dailyNotes = [
-            "You make ordinary days feel special.", "Your smile is my favorite thing to look at.",
-            "I am so lucky it is you.", "Thinking of you, as always.",
-            "You are my favorite notification.", "Every song reminds me of you.",
-            "Home is wherever you are.", "You are prettier than any photo.",
+            "you make ordinary days feel special :>", "your smile is my favorite thing to look at ;)",
+            "I am so lucky to have u", "currently thinking of u, as usual",
+            "hi, my favorite notification", "every song reminds me of you",
+            "home is wherever you are", "you are prettier than any photo",
         ];
         const memoriesPage = document.getElementById("memoriesPage");
         function renderMemories() {
