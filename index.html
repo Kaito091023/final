@@ -1811,6 +1811,364 @@
         #updatesPage:not(.hidden) {
             animation: fadeSlideUp .45s ease both;
         }
+
+        /* ---------- playlist controls, profiles, status sheet ---------- */
+        .song-ctl {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .song-ctl button {
+            border: none;
+            background: #fff0f4;
+            color: #c44569;
+            border-radius: 10px;
+            min-width: 32px;
+            height: 28px;
+            font-size: .8rem;
+            cursor: pointer;
+        }
+
+        .song-ctl button.on {
+            background: #c44569;
+            color: #fff;
+        }
+
+        .prof-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .prof {
+            background: #fff;
+            border: 1px solid #ffe0e7;
+            border-radius: 26px;
+            padding: 16px 10px 14px;
+            text-align: center;
+            box-shadow: 0 10px 22px -12px rgba(196, 69, 105, .4);
+            cursor: pointer;
+        }
+
+        .prof:active {
+            transform: scale(.97);
+        }
+
+        .avatar {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, #ff7aa2, #c44569);
+            box-shadow: 0 0 0 4px #ffe0e7;
+        }
+
+        .prof:nth-child(2) .avatar {
+            background: linear-gradient(135deg, #f0a1c0, #8d4a9c);
+        }
+
+        .prof-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #5b2340;
+        }
+
+        .prof-status {
+            margin-top: 6px;
+            background: #fff0f4;
+            border-radius: 14px;
+            padding: 8px;
+            font-size: .84rem;
+            color: #7a2e4a;
+            overflow-wrap: anywhere;
+        }
+
+        .prof-status span {
+            margin-right: 4px;
+            font-size: 1.1rem;
+        }
+
+        .prof-time {
+            font-size: .68rem;
+            color: #9a6475;
+            margin-top: 5px;
+        }
+
+        .sheet {
+            position: fixed;
+            inset: 0;
+            z-index: 45;
+            background: rgba(60, 20, 36, .5);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .sheet-card {
+            background: #fffaf7;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 28px 28px 0 0;
+            padding: 20px 18px calc(22px + env(safe-area-inset-bottom, 0px));
+        }
+
+        .sheet-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            font-style: italic;
+            color: #7a2e4a;
+            text-align: center;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .chip {
+            border: 1.5px solid #ffccd5;
+            background: #fff;
+            color: #7a2e4a;
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: .88rem;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .chip.on {
+            background: #c44569;
+            color: #fff;
+            border-color: #c44569;
+        }
+
+        .sheet-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .sheet-cancel {
+            border: none;
+            background: #ffe9ee;
+            color: #c44569;
+            font-weight: 700;
+            padding: 14px 20px;
+            border-radius: 999px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .sheet-btns .req-send {
+            flex: 1;
+        }
+
+        .song-card.moved {
+            animation: songPop 1.2s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes songPop {
+            0% {
+                box-shadow: 0 0 0 0 rgba(196, 69, 105, .5);
+            }
+
+            100% {
+                box-shadow: 0 0 0 16px rgba(196, 69, 105, 0);
+            }
+        }
+
+        .avatar {
+            position: relative;
+            width: 74px;
+            height: 74px;
+            cursor: pointer;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .cam {
+            position: absolute;
+            right: -3px;
+            bottom: -3px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #fff;
+            font-size: .75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .22);
+        }
+
+        /* ---------- mood meter ---------- */
+        .mood {
+            margin-top: 10px;
+        }
+
+        .mood-label {
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--mc);
+        }
+
+        .meter {
+            display: flex;
+            gap: 4px;
+            margin-top: 6px;
+        }
+
+        .meter i {
+            flex: 1;
+            height: 9px;
+            border-radius: 6px;
+            background: #f3dfe5;
+        }
+
+        .meter i.on {
+            background: var(--mc);
+            box-shadow: 0 0 9px -1px var(--mc);
+            animation: meterIn .55s cubic-bezier(.2, .9, .3, 1.2) backwards;
+        }
+
+        .meter i:nth-child(2) {
+            animation-delay: .07s;
+        }
+
+        .meter i:nth-child(3) {
+            animation-delay: .14s;
+        }
+
+        .meter i:nth-child(4) {
+            animation-delay: .21s;
+        }
+
+        .meter i:nth-child(5) {
+            animation-delay: .28s;
+        }
+
+        @keyframes meterIn {
+            from {
+                transform: scaleY(.2);
+                opacity: 0;
+            }
+        }
+
+        .mood.none {
+            font-size: .74rem;
+            color: #9a6475;
+            font-style: italic;
+        }
+
+        .sheet-card {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .sheet-sub {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #9a6475;
+            margin-top: 14px;
+        }
+
+        .lvl-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 2px 0 14px;
+        }
+
+        .lvl-row small {
+            color: #9a6475;
+            font-size: .72rem;
+        }
+
+        .lvl {
+            display: flex;
+            gap: 6px;
+        }
+
+        .lvl button {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1.5px solid #ffccd5;
+            background: #fff;
+            color: #7a2e4a;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .lvl button.on {
+            background: var(--mc);
+            border-color: var(--mc);
+            color: #fff;
+        }
+
+        /* ---------- dashboard tile entrance ---------- */
+        @keyframes tileIn {
+            from {
+                opacity: 0;
+                transform: translateY(26px) scale(.94);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .nav-btn-vertical.fade-in-right {
+            animation: tileIn .55s cubic-bezier(.2, .9, .3, 1.1) both;
+        }
+
+        .nav-btn-vertical.fade-in-right:nth-child(1) {
+            animation-delay: .30s;
+        }
+
+        .nav-btn-vertical.fade-in-right:nth-child(2) {
+            animation-delay: .38s;
+        }
+
+        .nav-btn-vertical.fade-in-right:nth-child(3) {
+            animation-delay: .46s;
+        }
+
+        .nav-btn-vertical.fade-in-right:nth-child(4) {
+            animation-delay: .54s;
+        }
+
+        .nav-btn-vertical.fade-in-right:nth-child(5) {
+            animation-delay: .62s;
+        }
+
+        .daily-note {
+            animation: tileIn .55s ease .75s both;
+        }
     </style>
 </head>
 
@@ -1821,7 +2179,7 @@
                 <div class="passcode-header">
                     <div class="emoji-icon">🔐</div>
                     <h2>Enter 4-Digit Code to Unlock</h2>
-                    <p style="font-size:0.75rem; margin-top:4px;"><span class="pass-sub">Enter your sectionn</span></p>
+                    <p style="font-size:0.75rem; margin-top:4px;"><span class="pass-sub">Enter your section :p</span></p>
                 </div>
                 <div class="code-display">
                     <input type="text" id="codeInput" class="code-digits" readonly placeholder="____">
@@ -1861,7 +2219,7 @@
             <div class="audio-wrapper">
                 <div class="emoji-icon">🎧💖</div>
                 <h2>How would you like to continue?</h2>
-                <p>Best experienced with soundd</p>
+                <p>Best experienced with sounds!</p>
                 <div class="audio-choices">
                     <button class="audio-btn primary" id="continueWithAudio">🔊 Continue with Music</button>
                     <button class="audio-btn" id="continueMuted">🔇 Continue Muted</button>
@@ -1874,7 +2232,7 @@
             <div class="dashboard">
                 <div class="simple-header">
                     <h1>Congratulations!</h1>
-                    <p class="sub-message">I hope you enjoy! 💖</p>
+                    <p class="sub-message">I hope you enjoy!💖</p>
                 </div>
                 <div class="days-chip" id="daysChip"></div>
                 <div class="daily-note" id="dailyNote"></div>
@@ -2048,6 +2406,7 @@
                     <div style="width: 44px;"></div>
                 </div>
                 <div class="page-content">
+                    <div class="prof-row" id="profRow"></div>
                     <div class="upd-composer">
                         <div class="upd-pick" id="updPick"></div>
                         <input type="text" id="updCaption" class="req-input" maxlength="140"
@@ -2057,6 +2416,7 @@
                     </div>
                     <div id="updFeed"></div>
                     <input type="file" id="updFile" accept="image/*" class="hidden">
+                    <input type="file" id="profFile" accept="image/*" class="hidden">
                 </div>
             </div>
         </div>
@@ -2087,6 +2447,21 @@
 
     <input type="file" id="photoInput" accept="image/*" multiple class="hidden">
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div id="statusSheet" class="sheet hidden">
+        <div class="sheet-card">
+            <div class="sheet-title" id="sheetTitle"></div>
+            <div class="sheet-sub">What are you up to?</div>
+            <div class="chips" id="sheetChips"></div>
+            <input id="sheetText" class="req-input" maxlength="60" placeholder="Or write your own…" autocomplete="off">
+            <div class="sheet-sub">How are you feeling?</div>
+            <div class="chips" id="moodChips"></div>
+            <div class="lvl-row"><small>a little</small>
+                <div class="lvl" id="moodLvl"></div><small>a lot</small>
+            </div>
+            <div class="sheet-btns"><button class="sheet-cancel" id="sheetCancel">Cancel</button><button
+                    class="req-send" id="sheetSave">Save status</button></div>
+        </div>
+    </div>
 
     <script>
         const CORRECT_CODE = "1202";
@@ -2119,7 +2494,7 @@
             document.querySelectorAll(".nav-btn-vertical").forEach(button => {
                 button.classList.add("fade-in-right");
                 button.addEventListener("animationend", function handleNavigationEntry(animationEvent) {
-                    if (animationEvent.target === button && animationEvent.animationName === "FadeInRight") {
+                    if (animationEvent.target === button && animationEvent.animationName === "tileIn") {
                         button.classList.remove("fade-in-right");
                     }
                 }, { once: true });
@@ -2257,7 +2632,7 @@
             const a = new Audio();
             a.preload = "auto";
             a.src = playlist[i].src;
-            a.addEventListener("ended", () => playSong((i + 1) % playlist.length));
+            a.addEventListener("ended", () => playSong(nextInOrder(i)));
             a.addEventListener("error", () => { failed[i] = true; if (currentAudio === a) playing = false; refreshUI(); });
             a.addEventListener("timeupdate", () => { if (currentAudio === a && a.duration) mpBar.style.width = (a.currentTime / a.duration * 100) + "%"; });
             return cache[i] = a;
@@ -2294,6 +2669,48 @@
             mpMute.textContent = isMuted ? "🔇" : "🔊";
         }
 
+        // ---------------- Playlist: pin + reorder (saved on this device) ----------------
+        const songKey = x => x.title + "|" + x.artist;
+        let songPrefs = { order: [], pinned: [] };
+        try { Object.assign(songPrefs, JSON.parse(localStorage.getItem("playlistPrefs") || "{}")); } catch (e) { }
+        const savePrefs = () => { try { localStorage.setItem("playlistPrefs", JSON.stringify(songPrefs)); } catch (e) { } };
+        const isPinned = idx => songPrefs.pinned.includes(songKey(playlist[idx]));
+        function songOrder() {
+            const keys = playlist.map(songKey);
+            const base = [...songPrefs.order.filter(k => keys.includes(k)), ...keys.filter(k => !songPrefs.order.includes(k))];
+            const pin = base.filter(k => songPrefs.pinned.includes(k)), rest = base.filter(k => !songPrefs.pinned.includes(k));
+            return [...pin, ...rest].map(k => keys.indexOf(k));
+        }
+        function nextInOrder(i) { const o = songOrder(); return o[(o.indexOf(i) + 1) % o.length]; }
+        // slides every card from its old spot to its new one, and gives the moved card a soft pulse
+        function flip(idx) {
+            const list = document.getElementById("songListArea"), first = {};
+            list.querySelectorAll(".song-card").forEach(c => { first[c.dataset.song] = c.getBoundingClientRect().top; });
+            animateSongs = false;
+            renderMusicPageContent();
+            list.querySelectorAll(".song-card").forEach(c => {
+                const d = first[c.dataset.song] - c.getBoundingClientRect().top;
+                if (c.dataset.song == idx) c.classList.add("moved");
+                if (!d) return;
+                c.style.transition = "none"; c.style.transform = `translateY(${d}px)`;
+                void c.offsetHeight;
+                c.style.transition = "transform .85s cubic-bezier(.25, .8, .25, 1)"; c.style.transform = "";
+                setTimeout(() => { c.style.transition = ""; }, 900);
+            });
+        }
+        function moveSong(idx, dir) {
+            const ord = songOrder(), pos = ord.indexOf(idx), to = pos + dir;
+            if (to < 0 || to >= ord.length || isPinned(ord[to]) !== isPinned(idx)) return;
+            const keys = ord.map(i => songKey(playlist[i]));
+            [keys[pos], keys[to]] = [keys[to], keys[pos]];
+            songPrefs.order = keys; savePrefs(); flip(idx);
+        }
+        function togglePin(idx) {
+            const k = songKey(playlist[idx]), i = songPrefs.pinned.indexOf(k);
+            if (i < 0) songPrefs.pinned.push(k); else songPrefs.pinned.splice(i, 1);
+            savePrefs(); flip(idx);
+        }
+
         function renderMusicPageContent() {
             const container = document.getElementById("musicPageContent");
             if (!container) return;
@@ -2305,12 +2722,15 @@
                 initRequestArea();
             }
             let h = `<div class="music-section"><h3>Fav songss</h3><div class="song-list">`;
-            playlist.forEach((song, idx) => {
+            songOrder().forEach(idx => {
+                const song = playlist[idx];
                 const on = playing && currentlyPlayingIndex === idx;
-                h += `<div class="song-card${animateSongs ? ' song-in' : ''}" style="--i:${idx}"><div class="song-emoji">${song.emoji}</div><div class="song-details"><div class="song-title">${song.title}${on ? ' <span class="eq"><i></i><i></i><i></i></span>' : ''}</div><div class="song-artist">${song.artist}</div>${failed[idx] ? '<div class="song-artist" style="color:#c2185b">⚠️ couldn’t load this song</div>' : ''}</div><div class="play-btn" data-play="${idx}">${on ? '⏸ Pause' : 'Play'}</div></div>`;
+                h += `<div class="song-card${animateSongs ? ' song-in' : ''}" data-song="${idx}" style="--i:${idx}"><div class="song-emoji">${song.emoji}</div><div class="song-details"><div class="song-title">${isPinned(idx) ? '📌 ' : ''}${song.title}${on ? ' <span class="eq"><i></i><i></i><i></i></span>' : ''}</div><div class="song-artist">${song.artist}</div><div class="song-ctl"><button class="${isPinned(idx) ? 'on' : ''}" data-pin="${idx}" aria-label="Pin song">📌</button><button data-mv="${idx}" data-dir="-1" aria-label="Move up">▲</button><button data-mv="${idx}" data-dir="1" aria-label="Move down">▼</button></div>${failed[idx] ? '<div class="song-artist" style="color:#c2185b">⚠️ couldn’t load this song</div>' : ''}</div><div class="play-btn" data-play="${idx}">${on ? '⏸ Pause' : '🎵 Play'}</div></div>`;
             });
             h += `</div><p style="font-size:0.7rem; text-align:center; margin-top:22px;">💖</p></div>`;
             listEl.innerHTML = h;
+            container.querySelectorAll('[data-pin]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); togglePin(+b.dataset.pin); }));
+            container.querySelectorAll('[data-mv]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); moveSong(+b.dataset.mv, +b.dataset.dir); }));
             container.querySelectorAll('.play-btn').forEach(btn => btn.addEventListener('click', e => {
                 e.stopPropagation();
                 const idx = +btn.dataset.play;
@@ -2321,6 +2741,12 @@
         }
 
         // ---------------- Albums ----------------
+        // Put your photos in a "Photos" folder next to index.html, then edit the lists below.
+        // Add/remove photos freely. If a file is missing, a pink placeholder shows instead.
+        // (Photos she adds herself are saved on her device and shown after these.)
+        // ===== SHARED PHOTOS (optional) =====
+        // Paste your Firebase details here so photos she adds show up on EVERY device.
+        // Leave the PASTE_... values alone and photos are only saved on her own phone.
         const firebaseConfig = {
             apiKey: "AIzaSyAF-04OTjTu6RkPWMygtd2I8OtwLUYScRA",
             authDomain: "test-ce145.firebaseapp.com",
@@ -2715,8 +3141,8 @@
         function initRequestArea() {
             const el = document.getElementById("requestArea");
             el.innerHTML = `<div class="req-box">
-                <h3>Request a song</h3>
-                <p class="req-sub">Tell me what to add to our playlist :></p>
+                <h3>💌 Request a song</h3>
+                <p class="req-sub">Tell me what to add to our playlist 🎧</p>
                 <input id="reqTitle" class="req-input" type="text" maxlength="100" placeholder="Song title" autocomplete="off">
                 <input id="reqArtist" class="req-input" type="text" maxlength="100" placeholder="Artist (optional)" autocomplete="off">
                 <button class="req-send" id="reqSend">Send request 💌</button>
@@ -2752,7 +3178,7 @@
         function renderRequests() {
             const el = document.getElementById("reqList");
             if (!el) return;
-            if (!requestsList.length) { el.innerHTML = reqReady ? `<p class="req-empty">No requests yet.</p>` : ""; return; }
+            if (!requestsList.length) { el.innerHTML = reqReady ? `<p class="req-empty">No requests yet. Be the first 💕</p>` : ""; return; }
             el.innerHTML = `<div class="req-title">Requested songs</div>` + requestsList.map(r =>
                 `<div class="req-item"><span>🎵</span><div class="req-text"><b>${esc(r.title)}</b>${r.artist ? `<small>${esc(r.artist)}</small>` : ""}</div><button class="req-del" data-id="${esc(r.id)}" aria-label="Remove request">✕</button></div>`
             ).join("");
@@ -2881,6 +3307,104 @@
                 box.append(sp);
             }
         })();
+        // ---------------- Profiles + status ----------------
+        const PROFILES = [{ id: "kaii", name: "Kaii" }, { id: "kisi", name: "Kisi" }];
+        const STATUS_PRESETS = [["🎮", "Playing"], ["😴", "Sleeping"], ["🏫", "At school"], ["📓", "Studying"], ["🍜", "Eating"], ["💻", "Coding"], ["🚌", "On the way"], ["🎧", "Listening to music"], ["🛁", "Showering"], ["💭", "Thinking of you"], ["🏋️‍♂️", "Working out"]];
+        let profData = {}, profStarted = false, sheetFor = null, profPickFor = null;
+        function renderProfiles() {
+            const row = document.getElementById("profRow");
+            row.innerHTML = PROFILES.map(p => {
+                const d = profData[p.id] || {};
+                return `<div class="prof" data-p="${p.id}"><div class="avatar" data-pic="${p.id}">${d.photo ? `<img src="${esc(d.photo)}" alt="">` : p.name[0]}<span class="cam">📷</span></div><div class="prof-name">${p.name}</div><div class="prof-status"><span>${esc(d.emoji || "✨")}</span>${esc(d.text || "Tap to set a status")}</div>${d.ts ? `<div class="prof-time">${timeAgo(d.ts)}</div>` : ""}${moodHTML(d)}</div>`;
+            }).join("");
+            row.querySelectorAll(".prof").forEach(c => c.onclick = () => openSheet(c.dataset.p));
+            row.querySelectorAll(".avatar").forEach(a => a.onclick = e => { e.stopPropagation(); profPickFor = a.dataset.pic; document.getElementById("profFile").click(); });
+        }
+        async function startProfiles() {
+            if (!CLOUD) { try { profData = JSON.parse(localStorage.getItem("profiles") || "{}"); } catch (e) { } renderProfiles(); return; }
+            if (profStarted) return;
+            profStarted = true;
+            try {
+                await cloudReady();
+                cloudDB.collection("profiles").onSnapshot(snap => { snap.forEach(d => { profData[d.id] = d.data(); }); renderProfiles(); }, () => { profStarted = false; });
+            } catch (e) { profStarted = false; }
+        }
+        function openSheet(id) {
+            sheetFor = id;
+            const d = profData[id] || {}, name = PROFILES.find(p => p.id === id).name;
+            document.getElementById("sheetTitle").textContent = `${name}’s status`;
+            document.getElementById("sheetText").value = d.text || "";
+            document.getElementById("sheetChips").innerHTML = STATUS_PRESETS.map(([e, t]) => `<button class="chip${d.text === t ? " on" : ""}" data-t="${t}">${e} ${t}</button>`).join("");
+            document.querySelectorAll("#sheetChips .chip").forEach(c => c.onclick = () => {
+                document.getElementById("sheetText").value = c.dataset.t;
+                document.querySelectorAll("#sheetChips .chip").forEach(x => x.classList.toggle("on", x === c));
+            });
+            renderMoodPicker(d);
+            document.getElementById("statusSheet").classList.remove("hidden");
+        }
+        const closeSheet = () => document.getElementById("statusSheet").classList.add("hidden");
+        document.getElementById("sheetCancel").onclick = closeSheet;
+        document.getElementById("statusSheet").addEventListener("click", e => { if (e.target.id === "statusSheet") closeSheet(); });
+        document.getElementById("sheetSave").onclick = async () => {
+            const text = document.getElementById("sheetText").value.trim().slice(0, 60);
+            if (!text && !sheetMood) { toast("Pick a status or a feeling first 💭"); return; }
+            const obj = {};
+            if (text) { const pre = STATUS_PRESETS.find(x => x[1] === text); Object.assign(obj, { emoji: pre ? pre[0] : "💬", text, ts: Date.now() }); }
+            if (sheetMood) Object.assign(obj, { mood: sheetMood, level: sheetLevel, mts: Date.now() });
+            try {
+                if (CLOUD) { await cloudReady(); await withTimeout(cloudDB.collection("profiles").doc(sheetFor).set(obj, { merge: true }), 15000); }
+                else { profData[sheetFor] = Object.assign({}, profData[sheetFor], obj); try { localStorage.setItem("profiles", JSON.stringify(profData)); } catch (e) { } renderProfiles(); }
+                closeSheet(); toast("Status updated 💕");
+            } catch (e) { toast("Couldn’t save the status"); }
+        };
+
+        // ---------------- Mood meter ----------------
+        const FEELINGS = {
+            happy: ["😊", "Happy", "#f2b134"], loved: ["🥰", "Loved", "#e0405f"], calm: ["😌", "Calm", "#5fbf9f"], tired: ["😴", "Tired", "#8f9bd6"], 
+            sad: ["😢", "Sad", "#5f87d4"], missing: ["🥺", "Missing you", "#a65fb0"], annoyed: ["😤", "Annoyed", "#e0763a"], anxious: ["😰", "Anxious", "#7f74b5"],
+            sick: ["🤒", "Sick", "#d46f6f"], bored: ["😐", "Bored", "#a0a0a0"], excited: ["🤩", "Excited", "#e0c040"],
+        };
+        let sheetMood = null, sheetLevel = 3;
+        function moodHTML(d) {
+            const f = FEELINGS[d.mood];
+            if (!f) return `<div class="mood none">Tap to share how you feel 💗</div>`;
+            return `<div class="mood" style="--mc:${f[2]}"><div class="mood-label">${f[0]} ${f[1]}</div><div class="meter">${[1, 2, 3, 4, 5].map(n => `<i${n <= (d.level || 0) ? ' class="on"' : ""}></i>`).join("")}</div></div>`;
+        }
+        function renderMoodPicker(d) {
+            sheetMood = FEELINGS[d.mood] ? d.mood : null;
+            sheetLevel = d.level || 3;
+            const chips = document.getElementById("moodChips"), lvl = document.getElementById("moodLvl");
+            const draw = () => {
+                chips.innerHTML = Object.entries(FEELINGS).map(([k, f]) => `<button class="chip${sheetMood === k ? " on" : ""}" data-k="${k}">${f[0]} ${f[1]}</button>`).join("");
+                chips.querySelectorAll(".chip").forEach(c => c.onclick = () => { sheetMood = sheetMood === c.dataset.k ? null : c.dataset.k; draw(); });
+                lvl.innerHTML = [1, 2, 3, 4, 5].map(n => `<button class="${n <= sheetLevel ? "on" : ""}" data-n="${n}">${n}</button>`).join("");
+                lvl.querySelectorAll("button").forEach(b => b.onclick = () => { sheetLevel = +b.dataset.n; draw(); });
+                lvl.style.setProperty("--mc", sheetMood ? FEELINGS[sheetMood][2] : "#c44569");
+            };
+            draw();
+        }
+
+        async function squarePhoto(file, size = 240) {
+            const url = URL.createObjectURL(file);
+            try {
+                const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = url; });
+                const m = Math.min(img.naturalWidth, img.naturalHeight);
+                const c = document.createElement("canvas"); c.width = c.height = size;
+                c.getContext("2d").drawImage(img, (img.naturalWidth - m) / 2, (img.naturalHeight - m) / 2, m, m, 0, 0, size, size);
+                return c.toDataURL("image/jpeg", 0.82);
+            } finally { URL.revokeObjectURL(url); }
+        }
+        document.getElementById("profFile").onchange = async e => {
+            const f = e.target.files[0]; e.target.value = "";
+            if (!f || !profPickFor) return;
+            try {
+                const photo = await squarePhoto(f);
+                if (CLOUD) { await cloudReady(); await withTimeout(cloudDB.collection("profiles").doc(profPickFor).set({ photo }, { merge: true }), 15000); }
+                else { profData[profPickFor] = Object.assign({}, profData[profPickFor], { photo }); try { localStorage.setItem("profiles", JSON.stringify(profData)); } catch (err) { } renderProfiles(); }
+                toast("Profile picture updated 💕");
+            } catch (err) { console.error(err); toast("Couldn’t use that photo"); }
+        };
+
         // ---------------- Updates ----------------
         // A photo + caption she (or you) posts, like "outside your house, waiting for you". Saved in Firebase (collection "updates").
         const updatesPage = document.getElementById("updatesPage");
@@ -2918,7 +3442,7 @@
                 }, err => { updStarted = false; setUpdHint(`Can’t load updates (${err.code || err.message}).`); });
             } catch (e) { updStarted = false; setUpdHint("Can’t reach the server right now. Check your internet."); }
         }
-        function openUpdates() { if (!document.getElementById("updPick").innerHTML) clearUpdPhoto(); renderUpdates(); startUpdates(); }
+        function openUpdates() { renderProfiles(); startProfiles(); if (!document.getElementById("updPick").innerHTML) clearUpdPhoto(); renderUpdates(); startUpdates(); }
         async function postUpdate() {
             const input = document.getElementById("updCaption"), cap = input.value.trim();
             if (!cap && !updFile) { toast("Add a caption or a photo first 📍"); return; }
@@ -2945,7 +3469,7 @@
         // ---------------- Memories + daily note ----------------
         // Edit these! Dates are YYYY-MM-DD.
         const memories = [
-            { date: "2026-10-07", title: "I confessed", note: "wait, test pa lang" },
+            { date: "2026-10-07", title: "The day I confessed", note: "test" },
         ];
         const dailyNotes = [
             "you make ordinary days feel special :>", "your smile is my favorite thing to look at ;)",
