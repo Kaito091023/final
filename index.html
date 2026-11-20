@@ -2476,7 +2476,7 @@
                         <div class="nav-icon-large">💌</div>
                         <div class="nav-text-group">
                             <div class="nav-label-large">Message</div>
-                            <div class="nav-role-large">Confession Letter</div>
+                            <div class="nav-role-large">Letter</div>
                         </div>
                         <div class="nav-arrow">→</div>
                     </button>
@@ -2634,7 +2634,7 @@
                     <div class="rs-sec" id="rsSec">All 100</div>
                     <div class="rs-grid" id="rsGrid"></div>
                     <div id="rsList" class="hidden"></div>
-                    <div class="rs-done hidden" id="rsDone">...and a thousand more 💖</div>
+                    <div class="rs-done hidden" id="rsDone">...and a thousand more</div>
                 </div>
             </div>
         </div>
@@ -3527,7 +3527,7 @@
         (function hearts() {
             if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
             const box = document.createElement("div"); box.className = "hearts"; document.body.prepend(box);
-            const em = ["💖", "🌸", "💕", "🌹"];
+            const em = [""];
             for (let i = 0; i < 14; i++) {
                 const sp = document.createElement("span"); sp.textContent = em[i % 4];
                 sp.style.cssText = `left:${Math.random() * 100}%;animation-duration:${8 + Math.random() * 8}s;animation-delay:${-Math.random() * 12}s;font-size:${14 + Math.random() * 16}px`;
@@ -3704,7 +3704,6 @@
         // ---------------- Memories + daily note ----------------
         // Edit these! Dates are YYYY-MM-DD.
         const memories = [
-            { date: "2026-10-07", title: "The day I confessed", note: "test" },
         ];
         const dailyNotes = [
             "you make ordinary days feel special :>", "your smile is my favorite thing to look at ;)",
@@ -3799,7 +3798,7 @@
         }
         function rsConfetti() {
             if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-            const r = document.getElementById("rsCard").getBoundingClientRect(), em = ["💖", "💕", "✨", "🌸"];
+            const r = document.getElementById("rsCard").getBoundingClientRect(), em = [""];
             for (let i = 0; i < 8; i++) {
                 const h = document.createElement("span");
                 h.className = "burst"; h.textContent = em[i % 4];
@@ -3884,7 +3883,6 @@
         document.addEventListener("click", e => {
             if (!e.target.closest(".nav-btn-vertical,.play-btn,.req-send,.add-photo-btn,.album-card")) return;
             if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-            const em = ["💖", "💕", "🌸", "✨"];
             for (let i = 0; i < 6; i++) {
                 const h = document.createElement("span");
                 h.className = "burst"; h.textContent = em[i % 4];
