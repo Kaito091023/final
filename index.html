@@ -3706,10 +3706,7 @@
         const memories = [
         ];
         const dailyNotes = [
-            "you make ordinary days feel special :>", "your smile is my favorite thing to look at ;)",
-            "I am so lucky to have u", "currently thinking of u, as usual",
-            "hi, my favorite notification", "every song reminds me of you",
-            "home is wherever you are", "you are prettier than any photo",
+            "",
         ];
         const memoriesPage = document.getElementById("memoriesPage");
         function renderMemories() {
@@ -3736,7 +3733,7 @@
         const _revealDashboard = revealDashboard;
         revealDashboard = function () { _revealDashboard(); startNote(); };
         noteEl.addEventListener("click", async () => {
-            const v = prompt("Write today’s note (leave empty to bring back the daily surprise):", customNote);
+            const v = prompt("Write today’s note", customNote);
             if (v === null) return;
             const text = v.trim().slice(0, 140);
             try {
