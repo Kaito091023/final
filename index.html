@@ -424,7 +424,6 @@
         }
 
         .direct-letter::before {
-            content: "❤️";
             position: absolute;
             top: -15px;
             left: 50%;
@@ -2366,7 +2365,6 @@
         }
 
         .rs-dot.fav::after {
-            content: "💖";
             position: absolute;
             top: -5px;
             right: -4px;
@@ -2454,7 +2452,7 @@
 
         <div id="audioScreen" class="screen hidden">
             <div class="audio-wrapper">
-                <div class="emoji-icon">🎧💖</div>
+                <div class="emoji-icon">🎧</div>
                 <h2>How would you like to continue?</h2>
                 <p>Best experienced with sounds!</p>
                 <div class="audio-choices">
@@ -2469,7 +2467,7 @@
             <div class="dashboard">
                 <div class="simple-header">
                     <h1>Congratulations!</h1>
-                    <p class="sub-message">I hope you enjoy!💖</p>
+                    <p class="sub-message">I hope you enjoy!</p>
                 </div>
                 <div class="days-chip" id="daysChip"></div>
                 <div class="daily-note" id="dailyNote"></div>
@@ -2516,7 +2514,6 @@
                     </button>
                 </div>
                 <div class="simple-footer">
-                    — amour de ma vie. ❤️
                 </div>
             </div>
         </div>
@@ -2531,8 +2528,13 @@
                 <div class="page-content">
                     <div class="direct-letter">
                         <div class="letter-content">
-                            <h4>To my dearest, Kacey</h4>
-                
+                            <p>hi again. wasn't really planning to write another letter, but I feel like I really need to clear some things up.</p>
+                            <p>may nakarating kasi sa'kin na you're apparently questioning things about me and christine. i don't really know the full details, but i'd genuinely appreciate it if you guys could stop jumping to conclusions agad-agad.</p>
+                            <p>she and i are really just friends, nothing more than that. and if things ever go beyond that, I think it's only fair to let us figure things out on our own.</p>
+                            <p> really hope you understand and stop making it into something that it isn't. just because we had something in the past doesn't mean I can no longer be friends with other people of the opposite gender, especially when they're someone you're friends with as well.</p>
+                            <p>if our friendship bothers you, then please direct that towards me, not her. wala naman siyang kinalaman doon, and I don't think she deserves to be talked about behind her back or be badmouthed by others just because she's friends with me. she doesn't deserve to be dragged into something that has nothing to do with her.</p>
+                            <p>I hope you can respect that and leave things as they are. thank you.</p>
+                            <p>and please, don't make me hate you :>></p>
                             <div class="signature">
                                 <strong>- Some random guy</strong>
                             </div>
@@ -2543,7 +2545,7 @@
                     </div>
                     <div style="display: flex; justify-content: center;">
                         <div class="romantic-note">
-                            ✨ Goodluck on your journey! ✨
+                            Goodluck on your journey!
                         </div>
                     </div>
                 </div>
@@ -2627,7 +2629,7 @@
                     <div class="rs-actions">
                         <button class="rs-btn primary" id="rsNext">Unlock next reason 💌</button>
                         <button class="rs-btn" id="rsRandom">🎲 Surprise me</button>
-                        <button class="rs-btn" id="rsFavs">💖 Favorites</button>
+                        <button class="rs-btn" id="rsFavs">Favorites</button>
                     </div>
                     <div class="rs-sec" id="rsSec">All 100</div>
                     <div class="rs-grid" id="rsGrid"></div>
@@ -2947,7 +2949,7 @@
                 const on = playing && currentlyPlayingIndex === idx;
                 h += `<div class="song-card${animateSongs ? ' song-in' : ''}" data-song="${idx}" style="--i:${idx}"><div class="song-emoji">${song.emoji}</div><div class="song-details"><div class="song-title">${isPinned(idx) ? '📌 ' : ''}${song.title}${on ? ' <span class="eq"><i></i><i></i><i></i></span>' : ''}</div><div class="song-artist">${song.artist}</div><div class="song-ctl"><button class="${isPinned(idx) ? 'on' : ''}" data-pin="${idx}" aria-label="Pin song">📌</button><button data-mv="${idx}" data-dir="-1" aria-label="Move up">▲</button><button data-mv="${idx}" data-dir="1" aria-label="Move down">▼</button></div>${failed[idx] ? '<div class="song-artist" style="color:#c2185b">⚠️ couldn’t load this song</div>' : ''}</div><div class="play-btn" data-play="${idx}">${on ? '⏸ Pause' : '🎵 Play'}</div></div>`;
             });
-            h += `</div><p style="font-size:0.7rem; text-align:center; margin-top:22px;">💖</p></div>`;
+            h += `</div><p style="font-size:0.7rem; text-align:center; margin-top:22px;"></p></div>`;
             listEl.innerHTML = h;
             container.querySelectorAll('[data-pin]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); togglePin(+b.dataset.pin); }));
             container.querySelectorAll('[data-mv]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); moveSong(+b.dataset.mv, +b.dataset.dir); }));
@@ -3023,7 +3025,7 @@
         // Shared mode (Firebase filled in above): saved online, visible on every device.
         // Otherwise: saved on her own device only (IndexedDB).
         let userPhotos = {}, storageOK = true, cloudErr = "";
-        const CAPTION = "Added by Kacey 💕";
+        const CAPTION = "Added by Kacey";
         const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), ms))]);
 
         // ---- this device only ----
@@ -3141,7 +3143,7 @@
         }
         function storeHint() {
             if (!storageOK) return CLOUD ? `Can't reach the shared album right now (${cloudErr || "offline"}). Check your internet.` : "Adding photos isn't available in this browser mode.";
-            return CLOUD ? "Photos you add here show up on every device 💕" : "Photos you add are saved on this device only 💕";
+            return CLOUD ? "Photos you add here show up on every device" : "Photos you add are saved on this device only";
         }
         // re-draw whatever is on screen when photos change (also runs when another device adds one)
         function refreshAlbumsView() {
@@ -3201,7 +3203,7 @@
             if (navigator.storage && navigator.storage.persist) navigator.storage.persist();
             await loadUserPhotos();
             if (openAlbum !== null) renderAlbum(openAlbum, false);
-            if (ok && !bad) toast(ok === 1 ? "Photo added 💕" : `${ok} photos added 💕`);
+            if (ok && !bad) toast(ok === 1 ? "Photo added" : `${ok} photos added`);
             else if (ok) toast(`${ok} added, ${bad} couldn't be used`);
             else toast("Couldn't save that photo. Try a JPG or PNG.", 3500);
         });
@@ -3239,7 +3241,7 @@
         function renderAlbumList(animate) {
             openAlbum = null;
             albumsTitle.textContent = "📸 Albums";
-            let h = `<p class="album-intro">Then &amp; now 💕</p><div class="album-list">`;
+            let h = `<p class="album-intro">Then &amp; now</p><div class="album-list">`;
             albums.forEach((a, i) => {
                 const all = getPhotos(a);
                 const stack = all.slice(0, 3).map(p => `<div class="stack-photo">${imgTag(p.src, "")}</div>`).join("")
@@ -3270,7 +3272,7 @@
             let h = `<p class="album-intro">${esc(a.intro)}</p>
                      <button class="add-photo-btn" id="addPhotoBtn">➕ Add your photos</button>
                      <p class="add-hint">${esc(storeHint())}</p>`;
-            if (!currentPhotos.length) h += `<p class="album-intro">No photos yet. Add the first one 💕</p>`;
+            if (!currentPhotos.length) h += `<p class="album-intro">No photos yet. Add the first one</p>`;
             h += `<div class="photo-grid">`;
             currentPhotos.forEach((p, j) => {
                 h += `<button class="photo-tile${animate ? " album-in" : ""}" style="--i:${j}" data-photo="${j}"><div class="photo-frame">${imgTag(p.src, p.caption)}</div><div class="photo-cap">${esc(p.caption)}</div></button>`;
@@ -3324,7 +3326,7 @@
             catch (e) { console.error(e); toast("Couldn't save the caption"); return; }
             await loadUserPhotos();
             refreshAlbumsView();
-            toast("Caption saved 💕");
+            toast("Caption saved");
         };
 
         document.getElementById("lbClose").onclick = closeLightbox;
@@ -3398,7 +3400,7 @@
         function renderRequests() {
             const el = document.getElementById("reqList");
             if (!el) return;
-            if (!requestsList.length) { el.innerHTML = reqReady ? `<p class="req-empty">No requests yet. Be the first 💕</p>` : ""; return; }
+            if (!requestsList.length) { el.innerHTML = reqReady ? `<p class="req-empty">No requests yet. Be the first</p>` : ""; return; }
             el.innerHTML = `<div class="req-title">Requested songs</div>` + requestsList.map(r =>
                 `<div class="req-item"><span>🎵</span><div class="req-text"><b>${esc(r.title)}</b>${r.artist ? `<small>${esc(r.artist)}</small>` : ""}</div><button class="req-del" data-id="${esc(r.id)}" aria-label="Remove request">✕</button></div>`
             ).join("");
@@ -3579,7 +3581,7 @@
             try {
                 if (CLOUD) { await cloudReady(); await withTimeout(cloudDB.collection("profiles").doc(sheetFor).set(obj, { merge: true }), 15000); }
                 else { profData[sheetFor] = Object.assign({}, profData[sheetFor], obj); try { localStorage.setItem("profiles", JSON.stringify(profData)); } catch (e) { } renderProfiles(); }
-                closeSheet(); toast("Status updated 💕");
+                closeSheet(); toast("Status updated");
             } catch (e) { toast("Couldn’t save the status"); }
         };
 
@@ -3626,7 +3628,7 @@
                 const photo = await squarePhoto(f);
                 if (CLOUD) { await cloudReady(); await withTimeout(cloudDB.collection("profiles").doc(profPickFor).set({ photo }, { merge: true }), 15000); }
                 else { profData[profPickFor] = Object.assign({}, profData[profPickFor], { photo }); try { localStorage.setItem("profiles", JSON.stringify(profData)); } catch (err) { } renderProfiles(); }
-                toast("Profile picture updated 💕");
+                toast("Profile picture updated");
             } catch (err) { console.error(err); toast("Couldn’t use that photo"); }
         };
 
@@ -3764,7 +3766,7 @@
             const card = document.getElementById("rsCard"), fav = rsFavs.includes(i);
             card.innerHTML = i < 0
                 ? `<div class="rs-num">Ready when you are</div><div class="rs-text">Tap below to unlock your first reason 💌</div>`
-                : `<button class="rs-fav${fav ? " on" : ""}" id="rsFavBtn" aria-label="Favorite this reason">💖</button><div class="rs-num">Reason #${i + 1}</div><div class="rs-text">${esc(REASONS[i])}</div>`;
+                : `<button class="rs-fav${fav ? " on" : ""}" id="rsFavBtn" aria-label="Favorite this reason"></button><div class="rs-num">Reason #${i + 1}</div><div class="rs-text">${esc(REASONS[i])}</div>`;
             if (animate) { card.classList.remove("pop"); void card.offsetWidth; card.classList.add("pop"); }
             const fb = document.getElementById("rsFavBtn");
             if (fb) fb.onclick = () => {
@@ -3780,16 +3782,16 @@
             document.getElementById("rsDone").classList.toggle("hidden", rsUnlocked < n);
             const nextBtn = document.getElementById("rsNext");
             nextBtn.disabled = rsUnlocked >= n;
-            nextBtn.textContent = rsUnlocked >= n ? "You found them all 💖" : "Unlock next reason 💌";
+            nextBtn.textContent = rsUnlocked >= n ? "You found them all" : "Unlock next reason 💌";
             document.getElementById("rsRandom").disabled = rsUnlocked === 0;
-            document.getElementById("rsFavs").textContent = rsFavView ? "🔢 Show all" : "💖 Favorites";
+            document.getElementById("rsFavs").textContent = rsFavView ? "🔢 Show all" : "Favorites";
             const grid = document.getElementById("rsGrid"), list = document.getElementById("rsList");
             grid.classList.toggle("hidden", rsFavView); list.classList.toggle("hidden", !rsFavView);
             document.getElementById("rsSec").textContent = rsFavView ? `Your favorites (${rsFavs.length})` : `All ${n}`;
             if (rsFavView) {
                 list.innerHTML = rsFavs.length
                     ? [...rsFavs].sort((a, b) => a - b).map(i => `<div class="rs-list-item"><b>#${i + 1}</b><span>${esc(REASONS[i])}</span></div>`).join("")
-                    : `<p class="req-empty">Tap the 💖 on a reason to save it here</p>`;
+                    : `<p class="req-empty">Tap the on a reason to save it here</p>`;
                 return;
             }
             grid.innerHTML = REASONS.map((_, i) => `<button class="rs-dot${i >= rsUnlocked ? " locked" : ""}${rsFavs.includes(i) ? " fav" : ""}${i === rsCur ? " cur" : ""}" data-i="${i}" ${i >= rsUnlocked ? "disabled" : ""}>${i < rsUnlocked ? i + 1 : "🔒"}</button>`).join("");
@@ -3824,7 +3826,7 @@
         document.getElementById("rsNext").onclick = () => {
             if (rsUnlocked >= REASONS.length) return;
             rsUnlocked++; rsSave(); rsShow(rsUnlocked - 1, true); rsConfetti(); rsSound();
-            if (rsUnlocked === REASONS.length) toast("That's all 100 💖");
+            if (rsUnlocked === REASONS.length) toast("That's all 100");
         };
         document.getElementById("rsRandom").onclick = () => {
             if (!rsUnlocked) return;
